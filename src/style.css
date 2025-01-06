@@ -64,6 +64,9 @@ ul {
 }
 
 #dropzone {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   border: 2px dashed #ccc;
   padding: 10px;
   text-align: center;
@@ -73,6 +76,8 @@ ul {
 .container {
   display: flex;
   gap: 10px;
+  border: 2px dashed #ccc;
+  border-color: #0056b3;
 }
 
 .draggable  {

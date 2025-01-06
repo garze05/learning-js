@@ -91,6 +91,7 @@ filterInput.addEventListener('keyup', function() {
 
 const draggables = document.querySelectorAll('.draggable');
 const dropzone = document.getElementById('dropzone');
+const draggablesContainer = document.querySelector('.container');
 let draggableParent;
 
 let draggedElement = null;
@@ -123,4 +124,18 @@ dropzone.addEventListener('drop', function(event) {
   }
   this.style.borderWidth = ''; // Restaurar estilo original
   this.style.borderColor = ''; // Restaurar estilo original
+});
+
+draggablesContainer.addEventListener('dragover', function(event) {
+  event.preventDefault();
+});
+
+draggablesContainer.addEventListener('drop', function(event) {
+  event.preventDefault();
+  if (draggedElement) {
+    this.appendChild(draggedElement); // Mueve el elemento arrastrado al área de destino
+    console.log(`Elemento soltado: ${draggedElement.id}`);
+  }
+  dropzone.style.borderWidth = ''; // Restaurar estilo original
+  dropzone.style.borderColor = ''; // Restaurar estilo original
 });
