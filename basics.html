@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios básicos</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <h1>Ejercicios basicos de DOM</h1>
+    <h2>Contador Incremental</h2>
+    <div class="row">
+      <p>Contador:</p>
+      <p id="contador">0</p>
+    </div>
+      <button id="btnIncrement">Incrementar</button>
+      <button id="btnReset">Reiniciar</button>
+  <h2>Cambiar color de div</h2>
+  <div>
+    <div id="colorDiv">Hazme click</div>
+    <button id="btnStop">Parar cambio de color</button>
+  </div>
+  <h2>Lista dinamica</h2>
+  <div>
+    <input type="text" id="itemInput" placeholder="Añade un item a la lista"/>
+    <button id="addButton">Añadir</button>
+    <ul id="dynamicList"></ul>
+  </div>
+  <h2>Galeria de imagenes</h2>
+  <div>
+    <img id="gallery" src="https://picsum.photos/id/237/300" alt="Imagen 1" /> <br>
+    <p id="caption">Imagen 1</p>
+    <button id="btnPrev">&lt;</button>
+    <button id="btnNext">&gt;</button>
+  </div>
+
+  <script type="module" src="/src/basics.js"></script>
+</body>
+</html>

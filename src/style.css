@@ -1,6 +1,20 @@
 body {
   font-family: 'Arial', sans-serif;
   padding: 20px;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.column {
+  display: flex;
+  gap: 10px;
+  flex-flow: column wrap;
 }
 
 .main-div {
@@ -69,4 +83,14 @@ ul {
   padding: 10px;
   text-align: center;
   cursor: move;
+}
+
+#colorDiv {
+  cursor: pointer;
+  width: 100px;
+  height: 20px;
+  padding: 10px;
+  background-color: #ffcc00;
+  color: black;
+  text-align: center;
 }
