@@ -18,8 +18,40 @@ resetBtn.addEventListener('click', () => {
 
 /// Cambiar color de div
 const colorDiv = document.getElementById('colorDiv');
+const changeBtn = document.getElementById('btnChange');
+let auto = true;
+let intervalId;
 
-colorDiv.addEventListener('click', () => {
+function randomColor() {
   let randomColor = Math.floor(Math.random()*16777215).toString(16);
   colorDiv.style.backgroundColor = "#" + randomColor;
+}
+
+function startAutoChange() {
+  intervalId = setInterval(randomColor, 1000);
+}
+
+function stopAutoChange() {
+  clearInterval(intervalId);
+}
+
+changeBtn.addEventListener('click', () => {
+  auto = !auto;
+  if (auto === false) {
+    changeBtn.innerText = 'Cambio de color: Manual';
+    colorDiv.innerText = 'Hazme click';
+    colorDiv.style.cursor = 'pointer';
+    stopAutoChange();
+    colorDiv.addEventListener('click', randomColor);
+  } else {
+    changeBtn.innerText = 'Cambio de color: Automático';
+    colorDiv.innerText = '';
+    colorDiv.style.cursor = '';
+    colorDiv.removeEventListener('click', randomColor);
+    startAutoChange();
+  }
 });
+
+if (auto) {
+  startAutoChange();
+}
