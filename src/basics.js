@@ -88,9 +88,9 @@ input.addEventListener('keyup', () => {
 
   Array.from(items).forEach(item => {
     if (item.textContent.toLowerCase().indexOf(term) != -1){ // Si el término está en el texto
-      item.style.display = 'block';
+      item.style.color = 'black';
     } else {
-      item.style.display = 'none';
+      item.style.color = 'lightgray';
     }
   });
 });
@@ -103,23 +103,36 @@ const prevBtn = document.getElementById('btnPrev');
 const caption = document.getElementById('caption');
 let currentImg = 0;
 
-caption.innerText = `Imagen ${currentImg+1} de ${imgNumber}`;
+function updateCaption() {
+  caption.innerText = `Imagen ${currentImg+1} de ${imgNumber}`;
+}
+
+function updateImage() {
+  imgs.forEach((img) => {
+    img.style.display = 'none';
+  });
+  imgs[currentImg].style.display = 'inline-block';
+}
+
+// Ejecucion inicial
+updateImage();
+updateCaption();
 
 nextBtn.addEventListener('click', () => {
-  if (currentImg < imgNumber) {
-    imgs[currentImg - 1].style.display = 'none';
-    imgs[currentImg].style.display = 'block';
+  if ((currentImg+1) < imgNumber) {
     currentImg++;
-    caption.innerText = `Imagen ${currentImg} de ${imgNumber}`;
+    updateCaption();
+    updateImage();
+    console.log(currentImg);
   }
 });
 
 prevBtn.addEventListener('click', () => {
-  if (currentImg > 1) {
-    imgs[currentImg - 1].style.display = 'none';
-    imgs[currentImg - 2].style.display = 'block';
+  if (currentImg > 0) {
     currentImg--;
-    caption.innerText = `Imagen ${currentImg} de ${imgNumber}`;
+    updateCaption();
+    updateImage();
+    console.log(currentImg);
   }
 });
 console.log(imgs);
