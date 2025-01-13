@@ -1,49 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manipulando el DOM</title>
-    <link rel="stylesheet" href="/src/style.css" />
-  </head>
-  <body>
-    <h1 id="title">Manipulacion DOM</h1>
-    <div class="main-div">
-      Imagen de ejemplo: <br>
-      <img src="/public/javascript.svg" alt="Imagen Original" />
-    </div>
-    <div class="old-div">
-      Este es un div que se va a eliminar
-    </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="icon" type="image/svg+xml" href="/public/javascript.svg" />
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <header></header>
+  <main></main>
+  <footer></footer>
 
-    <input type="text" id="filterInput" placeholder="Filtrar items" />
-
-    <ul class="list">
-      <li>JavaScript</li>
-      <li>Python</li>
-      <li>Ruby</li>
-      <li>Java</li>
-      <li>PHP</li>
-    </ul>
-    
-    <button id="btn">Presiona aquí</button>
-
-    <!--Formulario-->
-    <!--No estamos usando form porque eso reiniciaria la pagina-->
-    <div>
-      <input type="text" id="itemInput" placeholder="Añade un item a la lista"/>
-      <button id="addButton">Añadir</button>
-      <ul id="dynamicList"></ul>
-    </div>
-    <div class="container">
-      <h2>Arrastra y suelta</h2>
-      <div class="draggable" draggable="true" id="item1">Arrástrame 1</div>
-      <div class="draggable" draggable="true" id="item2">Arrástrame 2</div>
-      <div class="draggable" draggable="true" id="item3">Arrástrame 3</div>
-    </div>
-    <div id="dropzone">Zona para soltar</div>
-
-    <script type="module" src="/src/main.js"></script>
-  </body>
+  <script type="module" src="index.js"></script>
+  <script type="module" src="/src/app.js"></script> <!--Default script for all files-->
+</body>
 </html>

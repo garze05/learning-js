@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios básicos</title>
+  <link rel="icon" type="image/svg+xml" href="/public/javascript.svg" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header></header>
+  <main>
+    <h1>Ejercicios basicos de DOM</h1>
+      <h2>Contador +/-</h2>
+      <div class="row">
+        <button id="btnDecrement">-</button>
+        <p>Contador:</p>
+        <p id="contador">0</p>
+        <button id="btnIncrement">+</button>
+      </div>
+        <button id="btnReset">Reiniciar</button>
+    <h2>Cambiar color de div</h2>
+    <div class="fixed-container">
+      <div id="colorDiv" class="no-select"></div>
+      <button id="btnChange">Cambio de color: Automático</button>
+    </div>
+    <h2>Lista dinámica</h2>
+    <div class="fixed-container">
+      <input type="text" id="itemInput" placeholder="Añade un item a la lista"/>
+      <button id="addButton">Añadir</button>
+      <ul id="dynamicList"></ul>
+    </div>
+    <h2>Galeria de imagenes dinámica</h2>
+    <label for="numberOfImgs">Cuantas imágenes desea ver:</label>
+    <div>
+      <input type="number" id="numberOfImgs" placeholder="2" name="numberOfImgs"/>
+      <button id="btnGenerate">Generar galería</button>
+    </div>
+    <div id="loadingSpinner" style="display: none;">Cargando imágenes...</div>
+    <div id="galleryContainer" style="display: none;">
+
+    </div>
+    <p id="caption" style="display:none">Imagen 0 de 0</p>
+    <div class="row">
+      <button id="btnPrev" style="display: none;">&lt;</button>
+      <button id="btnNext" style="display: none;">&gt;</button>
+      <button id="btnCambiarNImgs" style="display: none;">Cambiar</button>
+    </div>
+      <!--
+      <p>
+        Press keys on the keyboard to see what the KeyboardEvent's key and code values
+        are for each one.
+      </p>
+      <div id="output" tabindex="0"></div>
+      -->
+  </main>
+  <footer></footer>
+
+  <script type="module" src="basics.js"></script>
+  <script type="module" src="/src/app.js"></script> <!--Default script for all files-->
+</body>
+</html>

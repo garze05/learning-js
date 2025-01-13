@@ -1,5 +1,5 @@
 /// Redirect to HTML
-setTimeout (function () { window. location. href = "basics.html"; }, 10);
+//setTimeout (function () { window. location. href = "basics.html"; }, 10);
 
 /*MANIPULANDO EL DOM*/
 
@@ -18,7 +18,7 @@ title.innerText = 'Manipulando el DOM';
 // También se pueden anadir otros elementos HTML
 title.innerHTML = '<em>Manipulando el DOM 2</em>';
 // Modificar atributos
-image.setAttribute('src', './public/vite.svg');
+image.setAttribute('src', '/public/vite.svg');
 // Annadir clases
 image.classList.add('img-fluid');
 // Remover clase
@@ -28,7 +28,7 @@ mainDiv.style.backgroundColor = '#ffcc00';
 
 /// Eliminar elementos
 const oldDiv = document.querySelector('.old-div');
-document.body.removeChild(oldDiv);
+document.body.main.removeChild(oldDiv);
 
 // Crear elementos
 const newDiv = document.createElement('div');
