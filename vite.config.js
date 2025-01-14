@@ -8,6 +8,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         basic: resolve(__dirname, 'src/basic-exercises/'),
         manipulatingdom: resolve(__dirname, 'src/manipulating-dom/'),
+        todolist: resolve(__dirname, 'src/todo-list/'),
       },
     },
   },

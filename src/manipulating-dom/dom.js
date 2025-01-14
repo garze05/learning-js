@@ -28,7 +28,7 @@ mainDiv.style.backgroundColor = '#ffcc00';
 
 /// Eliminar elementos
 const oldDiv = document.querySelector('.old-div');
-document.body.main.removeChild(oldDiv);
+oldDiv.remove();
 
 // Crear elementos
 const newDiv = document.createElement('div');

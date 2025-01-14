@@ -1,0 +1,46 @@
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+.header-container {
+  width: 100%;
+  padding: 1rem;
+}
+
+/*Para hacer el header-container mas clasico
+.header-container {  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+*/
+
+#headerLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+} 
+
+#headerLogo img {
+  margin-right: 0.2rem;
+}
+
+/* Para la navegación */
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 1rem; /* Espacio entre los links */
+  margin: 0;
+  padding: 0;
+}
+
+/*Menu actual en el que estamos*/
+nav a.active {
+  font-weight: bold;
+  /* border-bottom: 2px solid white;*/
+} 
