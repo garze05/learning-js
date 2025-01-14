@@ -30,7 +30,7 @@ header {
 }
 
 /* Para la navegación */
-nav ul {
+header nav ul {
   display: flex;
   justify-content: center;
   list-style: none;
@@ -40,7 +40,7 @@ nav ul {
 }
 
 /*Menu actual en el que estamos*/
-nav a.active {
-  font-weight: bold;
-  /* border-bottom: 2px solid white;*/
+header nav a.active {
+  /* font-weight: bold; */
+  border-bottom: 1px solid coral;
 } 

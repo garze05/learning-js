@@ -1,0 +1,54 @@
+/* Contenedores y layouts específicos */
+.main-div {
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+  border: 2px dashed #ccc;
+  border-color: #0056b3;
+}
+
+#galleryContainer img {
+  max-width: 300px;
+  margin-top: 10px;
+}
+
+.old-div {
+  margin-top: 20px;
+  background-color: #e0e0e0;
+  padding: 10px;
+}
+
+.new-div {
+  margin-top: 20px;
+  background-color: lightcoral;
+  padding: 10px;
+}
+
+#dropzone {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border: 2px dashed #ccc;
+  padding: 10px;
+  text-align: center;
+  margin-top: 10px; 
+}
+
+.fixed-container {
+  width: 400px;
+}
+
+.draggable  {
+  width: 100px;
+  height: 100px;
+  background-color: #ffcc00;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  cursor: move;
+}

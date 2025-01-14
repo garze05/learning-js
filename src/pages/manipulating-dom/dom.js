@@ -18,7 +18,7 @@ title.innerText = 'Manipulando el DOM';
 // También se pueden anadir otros elementos HTML
 title.innerHTML = '<em>Manipulando el DOM 2</em>';
 // Modificar atributos
-image.setAttribute('src', '/public/vite.svg');
+image.setAttribute('src', '/vite.svg');
 // Annadir clases
 image.classList.add('img-fluid');
 // Remover clase
@@ -30,11 +30,14 @@ mainDiv.style.backgroundColor = '#ffcc00';
 const oldDiv = document.querySelector('.old-div');
 oldDiv.remove();
 
-// Crear elementos
+// Crear elementos e insertarlos
 const newDiv = document.createElement('div');
+const footer = document.querySelector('footer');
 newDiv.innerText = 'Soy un nuevo div';
 newDiv.classList.add('new-div');
-document.body.appendChild(newDiv);
+document.body.insertBefore(newDiv, footer);
+// Para añadirlos directamente como hijo al body de último
+//document.body.appendChild(elemento);
 
 // Eventos
 // Todos los eventos disponibles: https://developer.mozilla.org/en-US/docs/Web/Events

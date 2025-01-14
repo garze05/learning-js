@@ -199,6 +199,7 @@ async function generateImgs() {
       const newImg = document.createElement('img');
       newImg.setAttribute('src', imgData.download_url);
       newImg.setAttribute('alt', `Imagen ${i+1}`);
+      newImg.setAttribute('height', 300);
       galleryContainer.appendChild(newImg);
     });
     imgs = galleryContainer.getElementsByTagName('img');

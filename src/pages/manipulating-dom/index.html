@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>learning-js</title>
+
+  <!-- Precargar recursos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Estilos criticos -->
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .component-placeholder {
+      min-height: 60px;
+      background: #333;
+      opacity: 0.6;
+    }
+
+    .invisible-until-loaded {
+      opacity: 0;
+    }
+
+    .content-loaded {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    a {
+      color: wheat;
+      text-decoration: none;
+    }
+  </style>
+
+  <!-- Fuentes y estilos externos -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/global.css">
+
+  <!-- Scripts base -->
+  <script type="module" src="/src/utils/components.js"></script>
+  <script type="module" src="/src/app.js"></script>
+  <!-- PAGE_STYLES -->
+  <link rel="stylesheet" href="/src/pages/manipulating-dom/style.css">
+</head>
+<body class="invisible-until-loaded">
+    <header id="header" class="component-placeholder"></header>
+    <main>
+      <h1 id="title">Manipulacion DOM</h1>
+      <div class="main-div">
+        Imagen de ejemplo: <br>
+        <img src="/javascript.svg" alt="Imagen Original" />
+      </div>
+      <div class="old-div">
+        Este es un div que se va a eliminar
+      </div>
+
+      <input type="text" id="filterInput" placeholder="Filtrar items" />
+
+      <ul class="list">
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>Ruby</li>
+        <li>Java</li>
+        <li>PHP</li>
+      </ul>
+      
+      <button id="btn">Presiona aquí</button>
+
+      <!--Formulario-->
+      <!--No estamos usando form porque eso reiniciaria la pagina-->
+      <div>
+        <input type="text" id="itemInput" placeholder="Añade un item a la lista"/>
+        <button id="addButton">Añadir</button>
+        <ul id="dynamicList"></ul>
+      </div>
+      <div class="container">
+        <h2>Arrastra y suelta</h2>
+        <div class="draggable" draggable="true" id="item1">Arrástrame 1</div>
+        <div class="draggable" draggable="true" id="item2">Arrástrame 2</div>
+        <div class="draggable" draggable="true" id="item3">Arrástrame 3</div>
+      </div>
+      <div id="dropzone">Zona para soltar</div>
+    </main>
+    <footer id="footer" class="component-placeholder"></footer>
+    
+    <!-- PAGE_SCRIPTS -->
+    <script type="module" src="dom.js"></script>
+  </body>
+</html>

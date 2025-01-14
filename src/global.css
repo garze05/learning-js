@@ -1,0 +1,78 @@
+@import url("/src/components/header/header.css");
+@import url("/src/components/footer/footer.css");
+
+:root {
+  --primary-color: #007bff;
+  --hover-color: #0056b3;
+  --text-light: wheat;
+  --text-hover: coral;
+  --transition-default: 0.3s ease;
+}
+
+/* Configuracion base y fuente */
+body {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  src: url(Jost.woff2) format('woff2');
+}
+
+/* Utilidades de layout */
+.row {
+  display: flex;
+  gap: 10px;
+  flex-flow: row wrap;
+}
+
+.column {
+  display: flex;
+  gap: 10px;
+  flex-flow: column wrap;
+}
+
+a {
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: coral;
+
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--hover-color);
+}
+
+ul {
+  margin-top: 15px;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Elementos de formulario */
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Utilidades */
+.no-select {
+  -webkit-user-select: none;  /* Safari */
+  -moz-user-select: none;     /* Firefox */
+  -ms-user-select: none;      /* Internet Explorer/Edge */
+  user-select: none;          /* Estándar */
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

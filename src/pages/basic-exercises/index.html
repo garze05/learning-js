@@ -3,11 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejercicios básicos</title>
-  <link rel="stylesheet" href="/src/style.css" />
+  <title>learning-js</title>
+
+  <!-- Precargar recursos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Estilos criticos -->
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .component-placeholder {
+      min-height: 60px;
+      background: #333;
+      opacity: 0.6;
+    }
+
+    .invisible-until-loaded {
+      opacity: 0;
+    }
+
+    .content-loaded {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    a {
+      color: wheat;
+      text-decoration: none;
+    }
+  </style>
+
+  <!-- Fuentes y estilos externos -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/global.css">
+
+  <!-- Scripts base -->
+  <script type="module" src="/src/utils/components.js"></script>
+  <script type="module" src="/src/app.js"></script>
+  <!-- PAGE_STYLES -->
+   <link rel="stylesheet" href="/src/pages/basic-exercises/style.css">
 </head>
-<body>
-  <header></header>
+<body class="invisible-until-loaded">
+  <header id="header" class="component-placeholder"></header>
   <main>
     <h1>Ejercicios básicos de DOM</h1>
       <h2>Contador +/-</h2>
@@ -45,17 +90,9 @@
       <button id="btnNext" style="display: none;">&gt;</button>
       <button id="btnCambiarNImgs" style="display: none;">Cambiar</button>
     </div>
-      <!--
-      <p>
-        Press keys on the keyboard to see what the KeyboardEvent's key and code values
-        are for each one.
-      </p>
-      <div id="output" tabindex="0"></div>
-      -->
   </main>
-  <footer></footer>
-
+  <footer id="footer" class="component-placeholder"></footer>
+  <!-- PAGE_SCRIPTS -->
   <script type="module" src="basics.js"></script>
-  <script type="module" src="/src/app.js"></script> <!--Default script for all files-->
 </body>
 </html>
