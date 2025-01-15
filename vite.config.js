@@ -1,19 +1,16 @@
-// import { resolve } from 'path'
-import { defineConfig } from 'vite'
-import mpa from 'vite-plugin-mpa'
+import { resolve } from 'path'
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [
-    mpa({
-    }),
-  ],
-  // build: {
-  //   rollupOptions: {
-  //     input: {
-  //       main: resolve(__dirname, 'index.html'),
-  //       basic: resolve(__dirname, 'src/basic-exercises/'),
-  //       manipulatingdom: resolve(__dirname, 'src/manipulating-dom/'),
-  //       todolist: resolve(__dirname, 'src/todo-list/'),
-  //     },
-  //   },
+  build: {
+    base: './',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, './'),
+        basic: resolve(__dirname, 'src/pages/basic-exercises/'),
+        manipulatingdom: resolve(__dirname, 'src/pages/manipulating-dom/'),
+        todolist: resolve(__dirname, 'src/pages/todo-list/'),
+      },
+    },
+  },
 })
