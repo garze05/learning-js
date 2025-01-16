@@ -1,11 +1,25 @@
-/* footer.css */
 footer {
   background-color: #333;
   color: white;
   padding: 10px 0;
-  text-align: center;
 }
 
 .footer-container {
   width: 100%;
+}
+
+.footer-link {
+  margin-left: 5px;
+  gap: 5px; /* Espaciado entre la imagen y el texto */
+}
+
+.footer-link img {
+  vertical-align: middle; /* Asegura que la imagen esté alineada */
+}
+
+/* Utilidades */
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

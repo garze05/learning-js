@@ -1,8 +1,5 @@
 import { loadComponent } from "./utils/components.js";
 
-const header = document.querySelector('header');
-const footer = document.querySelector('footer');
-
 // function addCss(fileName) {
 
 //   let head = document.head;
@@ -40,18 +37,32 @@ function updateCurrentNavPage() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-// Esperar a que todo esté listo
-Promise.all([
-  document.fonts.ready,
-  loadComponent('header', '/src/components/header/header.html'),
-  loadComponent('footer', '/src/components/footer/footer.html'),
-  addFavicon('/javascript.svg'),
-  
-]).then(() => {
-  updateCurrentNavPage(),
-  document.body.classList.remove('invisible-until-loaded');
-  document.body.classList.add('content-loaded');
-  header.classList.remove('component-placeholder');
-  footer.classList.remove('component-placeholder');
-});
+  // Solo incluir en Promise.all las operaciones de carga realmente asíncronas
+  Promise.all([
+    document.fonts.ready,
+    loadComponent('header', '/header.html'),
+    loadComponent('footer', '/footer.html')
+  ])
+  .then(() => {
+    // Primero las operaciones que afectan al contenido/estructura
+    updateCurrentNavPage();
+    addFavicon('/javascript.svg');  // Esto puede ir después ya que no es crítico para el layout
+
+    // Luego, en el siguiente frame, las operaciones visuales
+    requestAnimationFrame(() => {
+      document.body.classList.remove('invisible-until-loaded');
+      document.body.classList.add('content-loaded');
+      
+      // Usar querySelector para mayor seguridad
+      const header = document.querySelector('#header');
+      const footer = document.querySelector('#footer');
+      if (header) header.classList.remove('component-placeholder');
+      if (footer) footer.classList.remove('component-placeholder');
+    });
+  })
+  .catch(error => {
+    console.error('Error durante la carga:', error);
+    // Asegurar que la página sea visible incluso si algo falla
+    document.body.classList.remove('invisible-until-loaded');
+  });
 });
