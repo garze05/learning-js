@@ -1,7 +1,4 @@
-- Node.js v22+
-- Default package manager: pnpm
-- Using Vite
-```
-pnpm install
-pnpm run dev
-```
+<div align="center">
+  <img height="64" src="https://cdn.simpleicons.org/javascript" /><h1>learning-js</h1>
+  <p>My personal projects for learning the language</p>
+</div>
