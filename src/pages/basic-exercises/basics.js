@@ -1,3 +1,5 @@
+import { lightOrDark } from "../../utils/colors";
+
 // Funciones generales
 function hideElement(element) {
   if (element.style.display !== 'none') {
@@ -41,19 +43,37 @@ resetBtn.addEventListener('click', () => {
   contador.innerText = count;
 });
 
+//--------------------------//
 //* CAMBIAR COLOR DE DIV *//
 const colorDiv = document.getElementById('colorDiv');
 const changeBtn = document.getElementById('btnChange');
+const currentColorText = document.querySelector('#colorDivContainer p')
+
 let auto = true;
 let intervalId;
+let color;
+
+function updateColorText(){
+  currentColorText.textContent = "Color: #" + color;
+}
 
 function randomColor() {
   let randomColor = Math.floor(Math.random()*16777215).toString(16);
-  colorDiv.style.backgroundColor = "#" + randomColor;
+  return randomColor;
+}
+
+function changeDivColor() {
+  colorDiv.style.backgroundColor = "#" + color;
+  console.log(lightOrDark(color));
+  if (lightOrDark(color) === 'dark') {
+    colorDiv.style.color = 'white';
+  } else {
+    colorDiv.style.color = 'black';
+  }
 }
 
 function startAutoChange() {
-  intervalId = setInterval(randomColor, 1000);
+  intervalId = setInterval(function() { color = randomColor(); changeDivColor(); updateColorText();} , 1000);
 }
 
 function stopAutoChange() {
@@ -67,20 +87,29 @@ changeBtn.addEventListener('click', () => {
     colorDiv.innerText = 'Hazme click';
     colorDiv.style.cursor = 'pointer';
     stopAutoChange();
-    colorDiv.addEventListener('click', randomColor);
+    
+    colorDiv.addEventListener('click', function() { 
+      color = randomColor(); 
+      changeDivColor(); 
+      updateColorText();
+    });
   } else {
     changeBtn.innerText = 'Cambio de color: Automático';
     colorDiv.innerText = '';
     colorDiv.style.cursor = '';
-    colorDiv.removeEventListener('click', randomColor);
+    colorDiv.removeEventListener('click', function() { color = randomColor(); changeDivColor(); updateColorText();});
     startAutoChange();
   }
 });
 
 if (auto) {
+  color = randomColor();
+  changeDivColor();
+  updateColorText();
   startAutoChange();
 }
 
+//-----------------------//
 /// Lista dinamica
 const btnAdd = document.querySelector('#addButton');
 const input = document.querySelector('#itemInput');
