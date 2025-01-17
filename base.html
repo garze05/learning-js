@@ -13,7 +13,10 @@
   <style>
     body {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
     }
 
     .component-placeholder {
@@ -34,11 +37,6 @@
     main {
       padding: 20px;
     }
-
-    a {
-      color: wheat;
-      text-decoration: none;
-    }
   </style>
 
   <!-- Fuentes y estilos externos -->
@@ -50,11 +48,13 @@
   <!-- PAGE_STYLES -->
 </head>
 <body class="invisible-until-loaded">
-  <header id="header" class="component-placeholder"></header>
-  <main>
-    <!-- PAGE_CONTENT -->
-  </main>
-  <footer id="footer" class="component-placeholder"></footer>
+  <div class="page">
+    <header id="header" class="component-placeholder"></header>
+    <main>
+      <!-- PAGE_CONTENT -->
+    </main>
+    <footer id="footer" class="component-placeholder"></footer>
+  </div>
   <!-- PAGE_SCRIPTS -->
 </body>
 </html>

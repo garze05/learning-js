@@ -1,7 +1,10 @@
+footer a {
+  color: var(--darkbg-text);
+}
+
 footer {
-  background-color: #333;
-  color: white;
-  padding: 10px 0;
+  background-color: var(--dark-color);
+  color: var(--darkbg-text);
 }
 
 .footer-container {
@@ -15,11 +18,4 @@ footer {
 
 .footer-link img {
   vertical-align: middle; /* Asegura que la imagen esté alineada */
-}
-
-/* Utilidades */
-.centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

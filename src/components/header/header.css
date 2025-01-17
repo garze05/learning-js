@@ -1,7 +1,10 @@
+header a {
+  color: var(--darkbg-text);
+  margin: 0 0.5rem;
+}
+
 header {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
+  background-color: var(--dark-color);
 }
 
 .header-container {
@@ -42,5 +45,5 @@ header nav ul {
 /*Menu actual en el que estamos*/
 header nav a.active {
   /* font-weight: bold; */
-  border-bottom: 1px solid coral;
+  border-bottom: 2px solid var(--primary-color);
 } 

@@ -13,7 +13,10 @@
   <style>
     body {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
     }
 
     .component-placeholder {
@@ -34,11 +37,6 @@
     main {
       padding: 20px;
     }
-
-    a {
-      color: wheat;
-      text-decoration: none;
-    }
   </style>
 
   <!-- Fuentes y estilos externos -->
@@ -51,6 +49,7 @@
   <link rel="stylesheet" href="/src/pages/manipulating-dom/style.css">
 </head>
 <body class="invisible-until-loaded">
+  <div class="page">
     <header id="header" class="component-placeholder"></header>
     <main>
       <h1 id="title">Manipulacion DOM</h1>
@@ -81,7 +80,7 @@
         <button id="addButton">Añadir</button>
         <ul id="dynamicList"></ul>
       </div>
-      <div class="container">
+      <div class="containerElements">
         <h2>Arrastra y suelta</h2>
         <div class="draggable" draggable="true" id="item1">Arrástrame 1</div>
         <div class="draggable" draggable="true" id="item2">Arrástrame 2</div>
@@ -90,7 +89,7 @@
       <div id="dropzone">Zona para soltar</div>
     </main>
     <footer id="footer" class="component-placeholder"></footer>
-    
+  </div>
     <!-- PAGE_SCRIPTS -->
     <script type="module" src="/src/pages/manipulating-dom/dom.js"></script>
   </body>

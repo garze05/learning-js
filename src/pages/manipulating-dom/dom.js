@@ -96,7 +96,7 @@ filterInput.addEventListener('keyup', function() {
 
 const draggables = document.querySelectorAll('.draggable');
 const dropzone = document.getElementById('dropzone');
-const draggablesContainer = document.querySelector('.container');
+const draggablesContainer = document.querySelector('.containerElements');
 let draggableParent;
 
 let draggedElement = null;

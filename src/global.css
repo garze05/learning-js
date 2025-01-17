@@ -2,10 +2,12 @@
 @import url("/src/components/footer/footer.css");
 
 :root {
-  --primary-color: gold;
+  --primary-color: #F7DF1E;
   --hover-color: #F2BF00;
+  --dark-color: #333;
   --text-light: wheat;
-  --text-hover: coral;
+  --darkbg-text: #fff;
+  --background-color: #f3f3f3;
   --transition-default: 0.3s ease;
 }
 
@@ -14,7 +16,13 @@ body {
   font-family: 'Jost', sans-serif;
   font-style: normal;
   font-weight: 400;
-  background-color: #FCFCFC;
+}
+
+.page {
+  background-color: var(--background-color);
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 /* Utilidades de layout */
@@ -30,13 +38,14 @@ body {
   flex-flow: column wrap;
 }
 
-a {
-  transition: color 0.3s ease;
+.center {
+  text-align: center;
 }
 
-a:hover {
-  color: coral;
-
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 button {
@@ -46,7 +55,7 @@ button {
   color: #000;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-default);
 }
 
 button:hover {
@@ -57,6 +66,20 @@ ul {
   margin-top: 15px;
   list-style-type: none;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  transition:
+    color var(--transition-default),
+    transform var(--transition-default);
+}
+
+a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
 }
 
 /* Elementos de formulario */
@@ -76,3 +99,4 @@ input {
 .cursor-pointer {
   cursor: pointer;
 }
+
