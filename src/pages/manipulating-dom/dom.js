@@ -11,7 +11,6 @@ const mainDiv = document.querySelector('.main-div'); //. al inicio porque es una
 const image = document.querySelector('img');
 // querySelectorAll: Todos los elementos con el selector especificado
 const listItems = document.querySelectorAll('ul.list > li');
-console.log(listItems);
 
 /// Modificar elementos
 title.innerText = 'Manipulando el DOM';

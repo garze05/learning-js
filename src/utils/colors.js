@@ -1,49 +1,81 @@
-export function hexToRgb(color){
-    // Variables for red, green, blue values
-    let r, g, b;
+const hexToRgb = hex => {
+  let h = hex.slice(hex.startsWith('#') ? 1 : 0);
   
-    // Check the format of the color, HEX or RGB?
-    if (color.match(/^rgb/)) {
+  // If shorthand hex (e.g. #FFF), convert to full form
+  if (h.length === 3) {
+      h = [...h].map(x => x + x).join('');
+  }
   
-        // If RGB --> store the red, green, blue values in separate variables
-        color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
-        
-        r = color[1];
-        g = color[2];
-        b = color[3];
-    } 
-    else {
-        
-        // If hex --> Convert it to RGB: http://gist.github.com/983661
-        color = +("0x" + color.slice(1).replace( 
-        color.length < 5 && /./g, '$&$&'));
+  // Convert to integer
+  const hexInt = parseInt(h, 16);
   
-        r = color >> 16;
-        g = color >> 8 & 255;
-        b = color & 255;
-    }
+  // Extract RGB values using bit shifting
+  return {
+      r: hexInt >>> 16,
+      g: (hexInt & 0x00ff00) >>> 8,
+      b: hexInt & 0x0000ff
+  };
+};
 
-    return r, g, b;
-}
+export const getBrightness = (r, g, b) => {
+  // Fórmula común para calcular el brillo percibido
+  return (r * 299 + g * 587 + b * 114) / 1000;
+};
 
 export function lightOrDark(color) {
-
-  let r, g, b = hexToRgb(color);
-  let hsp;
-  // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
-  hsp = Math.sqrt(
-  0.299 * (r * r) +
-  0.587 * (g * g) +
-  0.114 * (b * b)
-  );
-
-  // Using the HSP value, determine whether the color is light or dark
-  if (hsp>127.5) {
-
-      return 'light';
-  } 
-  else {
-
-      return 'dark';
-  }
+  const { r, g, b } = hexToRgb(color);
+  const brightness = getBrightness(r, g, b);
+  
+  // Un valor de 128 es un buen punto medio para determinar si es claro u oscuro
+  return brightness < 128 ? 'dark' : 'light';
 }
+
+export const rgbToHsl = (r, g, b) => {
+    // Convert RGB values to range [0, 1]
+    const red = r / 255;
+    const green = g / 255;
+    const blue = b / 255;
+
+    // Find maximum and minimum values
+    const max = Math.max(red, green, blue);
+    const min = Math.min(red, green, blue);
+    
+    // Calculate lightness
+    const lightness = (max + min) / 2;
+    
+    // If max equals min, we have a shade of gray
+    if (max === min) {
+        return {
+            h: 0,
+            s: 0,
+            l: Math.round(lightness * 100)
+        };
+    }
+
+    // Calculate saturation
+    const delta = max - min;
+    const saturation = lightness <= 0.5 
+        ? delta / (max + min)
+        : delta / (2 - max - min);
+
+    // Calculate hue
+    let hue;
+    switch (max) {
+        case red:
+            hue = ((green - blue) / delta) + (green < blue ? 6 : 0);
+            break;
+        case green:
+            hue = ((blue - red) / delta) + 2;
+            break;
+        case blue:
+            hue = ((red - green) / delta) + 4;
+            break;
+    }
+    hue *= 60;
+
+    return {
+        h: Math.round(hue),
+        s: Math.round(saturation * 100),
+        l: Math.round(lightness * 100)
+    };
+};

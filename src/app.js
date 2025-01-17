@@ -22,6 +22,8 @@ function addFavicon(icon) {
   link.href = icon;
 
   head.appendChild(link);
+
+  ("Favicon cargado");
 }
 
 /* Añadir la clase de active al link actual automaticamente */

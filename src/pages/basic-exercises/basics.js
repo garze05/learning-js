@@ -64,12 +64,7 @@ function randomColor() {
 
 function changeDivColor() {
   colorDiv.style.backgroundColor = "#" + color;
-  console.log(lightOrDark(color));
-  if (lightOrDark(color) === 'dark') {
-    colorDiv.style.color = 'white';
-  } else {
-    colorDiv.style.color = 'black';
-  }
+  colorDiv.style.color = lightOrDark(color) === 'dark' ? 'white' : 'black';
 }
 
 function startAutoChange() {
