@@ -27,9 +27,7 @@ body {
 
 /* Utilidades de layout */
 .row {
-  display: flex;
-  gap: 10px;
-  flex-flow: row wrap;
+  display: inline-block;
 }
 
 .column {
@@ -46,16 +44,20 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  color: var(--dark-color);
 }
 
 button {
   margin-top: 10px;
-  padding: 8px 15px;
+  padding: 0.8rem 1rem;
   background-color: var(--primary-color);
   color: #000;
-  border: none;
   cursor: pointer;
   transition: background-color var(--transition-default);
+  border: 2px solid var(--dark-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 button:hover {
@@ -84,8 +86,15 @@ a:hover {
 
 /* Elementos de formulario */
 input {
-  padding: 8px;
-  border: 1px solid #ccc;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--dark-color);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input:focus{ 
+  outline: 4px solid var(--primary-color);
 }
 
 /* Utilidades */

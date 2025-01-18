@@ -12,6 +12,9 @@ import { loadComponent } from "./utils/components.js";
 //   head.appendChild(link);
 // }
 
+// Contenedor que deberian de tener todos los main
+export const container = document.querySelector('div .container');
+
 function addFavicon(icon) {
   // Basado en <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
   let head = document.head;

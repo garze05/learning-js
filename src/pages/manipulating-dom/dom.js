@@ -1,3 +1,5 @@
+import { container } from "../../app";
+
 /// Redirect to HTML
 //setTimeout (function () { window. location. href = "basics.html"; }, 10);
 
@@ -31,12 +33,13 @@ oldDiv.remove();
 
 // Crear elementos e insertarlos
 const newDiv = document.createElement('div');
-const footer = document.querySelector('footer');
-newDiv.innerText = 'Soy un nuevo div';
+newDiv.innerText = 'Soy un nuevo div generado por JS';
 newDiv.classList.add('new-div');
-document.body.insertBefore(newDiv, footer);
-// Para añadirlos directamente como hijo al body de último
-//document.body.appendChild(elemento);
+// Para añadirlos directamente como hijo al elemento de último
+// normalmente antes del '.' document.body
+container.appendChild(newDiv);
+// Para añadir antes de un elemento
+// element.insertBefore(newDiv, footer);
 
 // Eventos
 // Todos los eventos disponibles: https://developer.mozilla.org/en-US/docs/Web/Events

@@ -5,17 +5,12 @@ function hideElement(element) {
   if (element.style.display !== 'none') {
     element.style.display = 'none';
   }
-  return element.style.display;
 }
 
 function showElement(element) {
   if (element.style.display === 'none') {
-    element.style.display = 'flex';
-    element.style.justifyContent = 'center';
-    element.style.alignItems = 'center';
-    element.style.alignSelf = 'center';
+    element.style.display = ''; // inline es el default
   }
-  return element.style.display;
 }
 
 /* CONTADOR MAS Y MENOS  */
@@ -75,24 +70,32 @@ function stopAutoChange() {
   clearInterval(intervalId);
 }
 
+const updateDivColorState = () =>{
+  color = randomColor(); 
+  changeDivColor(); 
+  updateColorText();
+}
+
+// const updateDivColorState = () => {
+//   color = randomColor(); 
+//   changeDivColor(); 
+//   updateColorText();
+// }
+
 changeBtn.addEventListener('click', () => {
   auto = !auto;
   if (auto === false) {
     changeBtn.innerText = 'Cambio de color: Manual';
-    colorDiv.innerText = 'Hazme click';
+    colorDiv.innerHTML = '<h4>Hazme Click</h4>';
     colorDiv.style.cursor = 'pointer';
     stopAutoChange();
     
-    colorDiv.addEventListener('click', function() { 
-      color = randomColor(); 
-      changeDivColor(); 
-      updateColorText();
-    });
+    colorDiv.addEventListener('click', updateDivColorState);
   } else {
     changeBtn.innerText = 'Cambio de color: Automático';
     colorDiv.innerText = '';
     colorDiv.style.cursor = '';
-    colorDiv.removeEventListener('click', function() { color = randomColor(); changeDivColor(); updateColorText();});
+    colorDiv.removeEventListener('click', updateDivColorState);
     startAutoChange();
   }
 });
@@ -144,8 +147,8 @@ input.addEventListener('keyup', () => {
   });
 });
 
+//-----------------------//
 /// Galeria de imagenes dinamica
-
 // Antes de mostrar la galeria
 const imgNumberInput = document.getElementById('numberOfImgs');
 let imgNumber = 0;
@@ -175,6 +178,7 @@ btnGenerate.addEventListener('click', () => {
 
   hideElement(btnGenerate);
   hideElement(imgNumberInput);
+  hideElement(imgNumberInput.labels[0]);
 
   // Ejecucion inicial
   generateImgs();
@@ -196,6 +200,7 @@ btnCambiarNImgs.addEventListener('click', () => {
   
   showElement(btnGenerate);
   showElement(imgNumberInput);
+  showElement(imgNumberInput.labels[0]);
 });
 
 // function generateImgs() {
@@ -223,7 +228,6 @@ async function generateImgs() {
       const newImg = document.createElement('img');
       newImg.setAttribute('src', imgData.download_url);
       newImg.setAttribute('alt', `Imagen ${i+1}`);
-      newImg.setAttribute('height', 300);
       galleryContainer.appendChild(newImg);
     });
     imgs = galleryContainer.getElementsByTagName('img');
