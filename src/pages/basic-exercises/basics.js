@@ -1,17 +1,6 @@
 import { lightOrDark } from "../../utils/colors";
+import { hideElement, showElement } from "../../utils/domfunctions";
 
-// Funciones generales
-function hideElement(element) {
-  if (element.style.display !== 'none') {
-    element.style.display = 'none';
-  }
-}
-
-function showElement(element) {
-  if (element.style.display === 'none') {
-    element.style.display = ''; // inline es el default
-  }
-}
 
 /* CONTADOR MAS Y MENOS  */
 const contador = document.getElementById('contador');
@@ -53,8 +42,8 @@ function updateColorText(){
 }
 
 function randomColor() {
-  let randomColor = Math.floor(Math.random()*16777215).toString(16);
-  return randomColor;
+  let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  return randomColor.padStart(6, '0'); // Asegurarse de que siempre tenga 6 dígitos
 }
 
 function changeDivColor() {
@@ -224,15 +213,27 @@ async function generateImgs() {
       throw new Error('Error al obtener las imágenes');
     }
     const data = await response.json();
+    const uniqueUrls = new Set();
+    const imgMetadata = [];
+
     data.forEach((imgData, i) => {
-      const newImg = document.createElement('img');
-      newImg.setAttribute('src', imgData.download_url);
-      newImg.setAttribute('alt', `Imagen ${i+1}`);
-      galleryContainer.appendChild(newImg);
+      if (!uniqueUrls.has(imgData.download_url)) {
+        uniqueUrls.add(imgData.download_url);
+        imgMetadata.push(imgData); // Guardar metadata
+
+        const newImg = document.createElement('img');
+        newImg.setAttribute('src', imgData.download_url);
+        newImg.setAttribute('alt', `Imagen ${i+1}`);
+        newImg.style.width = '300px'; // Establecer tamaño fijo
+        newImg.style.height = '200px'; // Establecer tamaño fijo
+        galleryContainer.appendChild(newImg);
+      }
     });
+
     imgs = galleryContainer.getElementsByTagName('img');
     updateImage();
     updateCaption();
+    console.log(imgMetadata); // Mostrar metadata en la consola
   }
   catch (error) {
     console.error(error);
@@ -250,7 +251,7 @@ function updateImage() {
   Array.from(imgs).forEach(img => {
     img.style.display = 'none';
   });
-  imgs[currentImg].style.display = 'block';
+  showElement(imgs[currentImg]);
 }
 
 nextBtn.addEventListener('click', () => {
