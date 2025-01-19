@@ -46,6 +46,7 @@
   <!-- Scripts base -->
   <script type="module" src="/src/app.js"></script>
   <!-- PAGE_STYLES -->
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body class="invisible-until-loaded">
   <div class="page">
@@ -54,8 +55,12 @@
       <div class="container">
         <p>En progreso...</p>
         <h1>To-Do List CRUD</h1>
-        <input id="inputTask" placeholder="Agrega tu nueva tarea" />
-        <button id="btnAddTask">Agregar</button>
+        <form id="todoForm">
+          <input type="text" id="todoInput" placeholder="Agrega tu nueva tarea" required/>
+          <button type="submit">Agregar</button>
+        </form>
+
+        <ol id="todoList"></ol>
       </div>
     </main>
     <footer id="footer" class="component-placeholder"></footer>

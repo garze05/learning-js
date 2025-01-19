@@ -1,0 +1,31 @@
+#todoList{
+  text-align: left;
+}
+
+
+span{
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.btnDelete {
+  border: none;
+  background: none;
+  box-shadow: none;
+  color: #ff0000;
+  transition: 
+    font-size 0.2s ease-in-out;
+}
+
+/*Quitar estilos de hover que tienen los btn por defecto para btnDelete*/
+.btnDelete:hover {
+  background: none;
+  box-shadow: none;
+  font-size: 1.2rem;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #ccc;
+}
