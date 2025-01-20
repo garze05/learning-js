@@ -9,3 +9,7 @@ export function showElement(element) {
     element.style.display = ''; // inline es el default
   }
 }
+
+export function isVoid(input) {
+  return input.value.trim() === '';
+}

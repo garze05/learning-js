@@ -1,5 +1,5 @@
 import { lightOrDark } from "../../utils/colors";
-import { hideElement, showElement } from "../../utils/domfunctions";
+import { hideElement, showElement } from "../../utils/utils";
 
 
 /* CONTADOR MAS Y MENOS  */

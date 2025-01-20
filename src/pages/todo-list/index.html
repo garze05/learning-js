@@ -54,13 +54,25 @@
     <main class="center">
       <div class="container">
         <p>En progreso...</p>
-        <h1>To-Do List CRUD</h1>
+        <h1>To-Do List</h1>
         <form id="todoForm">
           <input type="text" id="todoInput" placeholder="Agrega tu nueva tarea" required/>
           <button type="submit">Agregar</button>
         </form>
-
-        <ol id="todoList"></ol>
+        <div id="error-message" style="color: red; display: none;">Por favor, ingrese una tarea válida.</div>
+        </form>
+        <div id="todoCounter"></div>
+        <!-- <button id="clearAll">Borrar todas las tareas</button>
+        <button id="clearCompleted">Borrar tareas completadas</button> -->
+        <div id="filterContainer">
+          <label for="filter">Filtros</label>
+          <select id="filter">
+            <option value="all">Todos</option>
+            <option value="completed">Completados</option>
+            <option value="uncompleted">Pendientes</option>
+          </select>
+        </div>
+        <ul id="todoList"></ul>
       </div>
     </main>
     <footer id="footer" class="component-placeholder"></footer>
