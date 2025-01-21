@@ -53,17 +53,18 @@
     <header id="header" class="component-placeholder"></header>
     <main class="center">
       <div class="container">
-        <p>En progreso...</p>
         <h1>To-Do List</h1>
         <form id="todoForm">
-          <input type="text" id="todoInput" placeholder="Agrega tu nueva tarea" required/>
+          <input type="text" id="todoInput" placeholder="Nueva tarea..." required/>
           <button type="submit">Agregar</button>
         </form>
+        <div id="addFirstTaskContainer">
+          <p class="subheader">Comienza Agregando Una Tarea</p>
+          <img height="64" src="/uparrow.svg"/> <!--Flecha hacia arriba-->
+        </div>
         <div id="error-message" style="color: red; display: none;">Por favor, ingrese una tarea válida.</div>
         </form>
         <div id="todoCounter"></div>
-        <!-- <button id="clearAll">Borrar todas las tareas</button>
-        <button id="clearCompleted">Borrar tareas completadas</button> -->
         <div id="filterContainer">
           <label for="filter">Filtros</label>
           <select id="filter">
@@ -72,7 +73,12 @@
             <option value="uncompleted">Pendientes</option>
           </select>
         </div>
-        <ul id="todoList"></ul>
+        <h2 class="left">Tareas pendientes</h2>
+        <ul id="todoList">
+        </ul>
+        <h2 class="left">Tareas completadas</h2>
+        <!-- <button id="clearAll">Borrar todas las tareas</button>
+        <button id="clearCompleted">Borrar tareas completadas</button> -->
       </div>
     </main>
     <footer id="footer" class="component-placeholder"></footer>

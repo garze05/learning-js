@@ -1,3 +1,8 @@
+/* Ideas 
+al completar tarea que se desplace abajo en una seccion de completadas
+que tenga un limite de caracteres, no que de error si no que corte el input
+
+*/
 import { isVoid, showElement, hideElement } from "../../utils/utils";
 
 const todoForm = document.querySelector('#todoForm');
@@ -21,24 +26,31 @@ todoForm.addEventListener('submit', (e) => {
 
 
 // Modificar la función addTask para incluir almacenamiento
-function addTask(text, completed = false) {
+function addTask(text, completed = false, date = null) {
   const li = document.createElement('li');
-  li.innerHTML = `
-    <input type="checkbox">
-    <span>${text}</span>
-    <button class=btnEdit>Editar</button>
-    <button class="btnDelete">Eliminar</button>
-  `;
+
+li.innerHTML = `
+  <input type="checkbox">
+  <span>${text}</span>
+  <button class="btnEdit">Editar</button>
+  <button class="btnDelete">Eliminar</button>
+  <button class=btnChangeDateTime></button>
+  <!-- <button>Completar</button> -->
+  <span class="date">Fecha creación: 
+  ${date === null ? new Date().toLocaleString() : date}</span>
+`;
 
   // Verificar si la tarea estaba completa por localStorage
   if (completed) {
     li.querySelector('span').classList.add('completed');
     li.querySelector('input').checked = true;
+    li.querySelector('.date').classList.add('completed');
   }
 
   // Para marcar que esta completada
   li.querySelector('input').addEventListener('change', () => {
     li.querySelector('span').classList.toggle('completed');
+    li.querySelector('.date').classList.toggle('completed');
     saveTasks();
     handleFilterChange(); // Actualizar la vista después de cambiar el estado de la tarea
   });
@@ -145,6 +157,8 @@ function saveTasks() {
   const tasks = Array.from(todoList.children).map((li) => ({
     text: li.querySelector('span').textContent,
     completed: li.querySelector('span').classList.contains('completed'),
+    // Eliminarle el "Fecha creación: " al guardar la fecha
+    date: li.querySelector('.date').textContent.replace('Fecha creación: ', '')
   }));
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
@@ -153,7 +167,7 @@ function saveTasks() {
 document.addEventListener('DOMContentLoaded', () => {
   const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
   savedTasks.forEach((task) => {
-    addTask(task.text, task.completed);
+    addTask(task.text, task.completed, task.date);
   });
 
   document.getElementById('filter').addEventListener('change', handleFilterChange);
