@@ -1,7 +1,7 @@
 /* Ideas 
-al completar tarea que se desplace abajo en una seccion de completadas
-que tenga un limite de caracteres, no que de error si no que corte el input
-
+- al completar tarea que se desplace abajo en una seccion de completadas
+- que tenga un limite de caracteres, no que de error si no que corte el input
+- poder arrastrar y reordenar las tareas
 */
 import { isVoid, showElement, hideElement } from "../../utils/utils";
 
@@ -32,8 +32,8 @@ function addTask(text, completed = false, date = null) {
 li.innerHTML = `
   <input type="checkbox">
   <span>${text}</span>
-  <button class="btnEdit">Editar</button>
-  <button class="btnDelete">Eliminar</button>
+  <button class="btnEdit"></button>
+  <button class="btnDelete"></button>
   <button class=btnChangeDateTime></button>
   <!-- <button>Completar</button> -->
   <span class="date">Fecha creación: 
@@ -91,7 +91,10 @@ function deleteTask(task) {
 }
 
 function editTask(task) {
-  task.querySelector('.btnEdit').innerText === 'Guardar' ? task.querySelector('.btnEdit').innerText = 'Editar' : task.querySelector('.btnEdit').innerText = 'Guardar';
+  const btnEdit = task.querySelector('.btnEdit');
+  btnEdit.style.backgroundImage = btnEdit.style.backgroundImage.includes('save.svg') 
+    ? 'url("/public/edit.svg")' 
+    : 'url("/public/save.svg")';
   const span = task.querySelector('span');
   const currentText = span.textContent;
   span.innerHTML = `
@@ -107,7 +110,7 @@ function editTask(task) {
     } else {
       span.textContent = input.value;
       saveTasks();
-      task.querySelector('.btnEdit').innerText = 'Editar';
+      btnEdit.style.backgroundImage = 'url("/public/edit.svg")';
     }
   });
 

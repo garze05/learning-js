@@ -60,6 +60,10 @@ option {
 
 /* Solo los botones de los tasks */
 li button {
+  margin: 0;
+  height: 2rem;
+  width: 2rem;
+  background-size: contain; /* Asegura que el SVG se escale correctamente */
   border: none;
   background: none;
   cursor: pointer;
@@ -68,7 +72,6 @@ li button {
   box-shadow: none;
   transition: 
     transform 0.2s ease-in-out;
-  font-weight: 700;
 }
 
 li button:hover {
@@ -96,19 +99,18 @@ input[type="checkbox"]:hover{
 }
 
 .btnDelete {
+  background: url('/public/trash.svg') no-repeat center center;
   color: #ff0000;
 }
 
 .btnEdit {
   color: var(--hover-color);
+  background: url('/public/edit.svg') no-repeat center center;
+
 }
 
 .btnChangeDateTime {
-  margin: 0;
-  height: 2rem;
-  width: 2rem;
   background: url('/public/time.svg') no-repeat center center;
-  background-size: contain; /* Asegura que el SVG se escale correctamente */
 }
 
 .date {
