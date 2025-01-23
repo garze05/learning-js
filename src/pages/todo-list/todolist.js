@@ -31,13 +31,15 @@ function addTask(text, completed = false, date = null) {
 
 li.innerHTML = `
   <input type="checkbox">
-  <span>${text}</span>
+  <div class="task-content">
+    <span>${text}</span>
+    <p class="date">Fecha creación: ${date === null ? new Date().toLocaleString() : date}</p>
+  </div>
   <button class="btnEdit"></button>
   <button class="btnDelete"></button>
-  <button class=btnChangeDateTime></button>
+  <!-- <button class=btnChangeDateTime></button> -->
   <!-- <button>Completar</button> -->
-  <span class="date">Fecha creación: 
-  ${date === null ? new Date().toLocaleString() : date}</span>
+  
 `;
 
   // Verificar si la tarea estaba completa por localStorage
