@@ -8,7 +8,7 @@
   flex-flow: row nowrap;
 }
 
-#todoList{
+#todoList, #completedList {
   /* background-color: #fff; */
   /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
   /* max-height: 300px; */
@@ -33,7 +33,7 @@
   font-size: 1.2rem;
 }
 
-#todoList li {
+#todoList li, #completedList li {
   display: grid;
   grid-template-columns: .2fr 1fr .2fr .2fr;
   align-items: center;
@@ -42,6 +42,24 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   background-color: #fff;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+/* #todoList li, #completedList li {
+  cursor: grab;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+
+#todoList li:active, #completedList li:active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+} */
+
+#todoList li.removing, #completedList li.removing {
+  transform: translateX(-100%);
+  animation: fadeOut .5s forwards ease;
 }
 
 #upperControls {
@@ -134,4 +152,36 @@ input[type="checkbox"]:hover{
 .completed {
   text-decoration: line-through;
   color: #ccc;
+}
+
+/* Animations */
+
+/* Move from current position down to ~center of screen */
+@keyframes moveDownCenter {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    /* Adjust 40vh as desired for "center" */
+    transform: translateY(20vh);
+  }
+}
+
+/* Move from ~center of screen back up to original position */
+@keyframes moveUpOriginal {
+  0% {
+    /* Match ending position of moveDownCenter */
+    transform: translateY(20vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.element-down {
+  animation: moveDownCenter .5s forwards ease;
+}
+
+.element-up {
+  animation: moveUpOriginal .5s forwards ease;
 }

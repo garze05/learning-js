@@ -51,21 +51,22 @@
 <body class="invisible-until-loaded">
   <div class="page">
     <header id="header" class="component-placeholder"></header>
-    <main class="center">
+    <main class="center" style="view-transition-name: todolist;">
       <div class="container">
-        <form id="todoForm">
-          <input type="text" id="todoInput" placeholder="Nueva tarea..." required/>
-          <button type="submit">Agregar</button>
-        </form>
-        <div id="addFirstTaskContainer">
-          <p class="subheader">Comienza Agregando Una Tarea</p>
-          <img height="64" src="/uparrow.svg"/> <!--Flecha hacia arriba-->
+        <div id="formContainer">
+          <form id="todoForm">
+            <input type="text" id="todoInput" placeholder="Nueva tarea..." required/>
+            <button type="submit">Agregar</button>
+          </form>
+          <div id="addFirstTaskContainer">
+            <p class="subheader">Comienza Agregando Una Tarea</p>
+            <img height="64" src="/uparrow.svg"/> <!--Flecha hacia arriba-->
+          </div>
+          <div id="error-message" style="color: red; display: none;">Por favor, ingrese una tarea válida.</div>
+          </form>
+            <!-- <button id="clearAll">Borrar todas las tareas</button>
+            <button id="toggleAll">Marcar todas como completadas</button> -->
         </div>
-        <div id="error-message" style="color: red; display: none;">Por favor, ingrese una tarea válida.</div>
-        </form>
-        <div id="upperControls">
-          <!-- <button id="clearAll">Borrar todas las tareas</button>
-          <button id="toggleAll">Marcar todas como completadas</button> -->
           <div id="filterContainer">
             <label for="filter">Filtros</label>
             <select id="filter">
@@ -76,15 +77,14 @@
           </div>
           <!-- <span id="todoCounter">Por completar: 0</span>
           <span id="completedCounter">Completadas: 0</span> -->
-        </div>
 
         <div id="todoListContainer">
           <h2 class="left">Tareas pendientes</h2>
           <ul id="todoList"></ul>
         </div>
-        <div id="completedTasksContainer">
+        <div id="completedListContainer">
           <h2 class="left">Tareas completadas</h2>
-          <ul id="completedTasks"></ul>
+          <ul id="completedList"></ul>
         </div>
       </div>
     </main>

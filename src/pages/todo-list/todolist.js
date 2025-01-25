@@ -5,9 +5,26 @@
 */
 import { isVoid, showElement, hideElement } from "../../utils/utils";
 
-const todoForm = document.querySelector('#todoForm');
-const todoInput = document.querySelector('#todoInput');
-const todoList = document.querySelector('#todoList');
+// Upper form
+const formContainer = document.querySelector('#formContainer');
+  const addFirstTaskContainer = formContainer.querySelector('#addFirstTaskContainer')
+  const todoForm = formContainer.querySelector('#todoForm');
+  const todoInput = formContainer.querySelector('#todoInput');
+
+// Filter
+const filterContainer = document.querySelector('#filterContainer');
+  const filter = filterContainer.querySelector('#filter');
+
+// Lists
+const todoListContainer = document.querySelector('#todoListContainer');
+  const todoList = todoListContainer.querySelector('#todoList');
+const completedListContainer = document.querySelector('#completedListContainer');
+  const completedList = completedListContainer.querySelector('#completedList');
+
+// Variables
+let todoListCount = 0;
+let completedListCount = 0;
+let taskCount = 0;
 
 todoForm.addEventListener('submit', (e) => {
   e.preventDefault(); // Evita que el formulario se envíe, controlamos que pasa con JS
@@ -16,7 +33,6 @@ todoForm.addEventListener('submit', (e) => {
   const taskText = todoInput.value.trim();
 
   if (taskText === '') {
-    alert('El campo no puede estar vacío');
     return;
   }
 
@@ -24,65 +40,82 @@ todoForm.addEventListener('submit', (e) => {
   todoInput.value = '';
 });
 
-
-// Modificar la función addTask para incluir almacenamiento
 function addTask(text, completed = false, date = null) {
   const li = document.createElement('li');
 
-li.innerHTML = `
-  <input type="checkbox">
-  <div class="task-content">
-    <span>${text}</span>
-    <p class="date">Fecha creación: ${date === null ? new Date().toLocaleString() : date}</p>
-  </div>
-  <button class="btnEdit"></button>
-  <button class="btnDelete"></button>
-  <!-- <button class=btnChangeDateTime></button> -->
-  <!-- <button>Completar</button> -->
-  
-`;
+  // Hace que todo el <li> sea arrastrable
+  li.setAttribute('draggable', 'true');
+
+  const format = new Intl.DateTimeFormat('es-ES', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+    hour12: true
+  });
+
+  li.innerHTML = `
+    <input type="checkbox">
+    <div class="task-content">
+      <span>${text}</span>
+      <p class="date">Fecha creación: ${date === null ? format.format(new Date()) : date}</p>
+    </div>
+    <button class="btnEdit"></button>
+    <button class="btnDelete"></button>
+  `;
 
   // Verificar si la tarea estaba completa por localStorage
   if (completed) {
     li.querySelector('span').classList.add('completed');
-    li.querySelector('input').checked = true;
     li.querySelector('.date').classList.add('completed');
+    li.querySelector('input').checked = true;
+    completedList.appendChild(li);
+  } else {
+    todoList.appendChild(li);
   }
 
   // Para marcar que esta completada
   li.querySelector('input').addEventListener('change', () => {
     li.querySelector('span').classList.toggle('completed');
     li.querySelector('.date').classList.toggle('completed');
+    
+    if (li.querySelector('span').classList.contains('completed')) {
+      completedList.appendChild(li);
+    } else {
+      todoList.appendChild(li);
+    }
+
     saveTasks();
     handleFilterChange(); // Actualizar la vista después de cambiar el estado de la tarea
   });
 
+  // Eliminar tarea
   li.querySelector('.btnDelete').addEventListener('click', (e) => {
-    e.stopPropagation(); // Evita que el evento se propague a los padres
-    deleteTask(li);
-    saveTasks();
+    e.stopPropagation();
+    li.classList.add('removing');
+    li.addEventListener('transitionend', () => {
+      deleteTask(li);
+      saveTasks();
+    });
   });
 
+  // Editar tarea
   li.querySelector('.btnEdit').addEventListener('click', (e) => {
     e.stopPropagation();
     editTask(li);
     console.log("Editando tarea");
   });
 
-  todoList.appendChild(li);
   saveTasks();
 
   // Reiniciar el filtro a "todos" cuando se agrega la primera tarea
-  if (todoList.children.length === 1) {
-    document.getElementById('filter').value = 'all';
+  if (todoList.children.length === 1 && completedList.children.length === 0) {
+    filter.value = 'all';
     handleFilterChange();
   }
 
   // Verificar el filtro actual y ocultar la tarea si es necesario
-  const filterValue = document.getElementById('filter').value;
-  if (filterValue === 'completed' && !completed) {
+  if (filter.value === 'completed' && !completed) {
     hideElement(li);
-  } else if (filterValue === 'uncompleted' && completed) {
+  } else if (filter.value === 'uncompleted' && completed) {
     hideElement(li);
   }
 }
@@ -131,41 +164,80 @@ function editTask(task) {
 }
 
 function handleFilterChange() {
-  const filterValue = document.getElementById('filter').value;
-  const tasks = Array.from(todoList.children);
+  
+  switch (filter.value) {
+    case 'all':
+      showElement(todoListContainer);
+      showElement(completedListContainer);
+      break;
+    case 'completed':
+        showElement(completedListContainer);
+        hideElement(todoListContainer);
+      break;
+    case 'uncompleted':
+        showElement(todoListContainer);
+        hideElement(completedListContainer);
+      break;
+  }
+}
 
-  tasks.forEach((task) => {
-    switch (filterValue) {
-      case 'all':
-        showElement(task);
-        break;
-      case 'completed':
-        if (task.querySelector('span').classList.contains('completed')) {
-          showElement(task);
-        } else {
-          hideElement(task);
-        }
-        break;
-      case 'uncompleted':
-        if (!task.querySelector('span').classList.contains('completed')) {
-          showElement(task);
-        } else {
-          hideElement(task);
-        }
-        break;
-    }
-  });
+function handleCounter() {
+  // Obtener cuantos li hay en cada lista
+  todoListCount = todoList.children.length;
+  completedListCount = completedList.children.length;
+
+  taskCount = todoListCount + completedListCount;
+
+  // Queremos mostrar el mensaje de "Agrega tu primera tarea" si no hay tareas para indicar al usuario que puede agregar tareas
+  // Queremos que apenas haya una tarea se oculte el mensaje, y que el formulario se vaya arriba con una animacion
+  // Hasta que no termine la animacion no se oculte el mensaje
+  if (taskCount === 0) {
+    showElement(addFirstTaskContainer);
+    addFirstTaskContainer.classList.remove('fade-out');
+    addFirstTaskContainer.classList.add('fade-in');
+
+    hideElement(todoListContainer);
+    hideElement(completedListContainer);
+    hideElement(filterContainer);
+    
+    formContainer.classList.remove('element-up');
+    formContainer.classList.add('element-down');
+
+  } else {
+    addFirstTaskContainer.classList.remove('fade-in');
+    hideElement(addFirstTaskContainer);
+
+    showElement(todoListContainer);
+    showElement(filterContainer);
+    showElement(completedListContainer);
+    todoListContainer.classList.remove('fade-out');
+    todoListContainer.classList.add('fade-in');
+    filterContainer.classList.remove('fade-out');
+    filterContainer.classList.add('fade-in');
+    completedListContainer.classList.remove('fade-out');
+    completedListContainer.classList.add('fade-in');
+
+
+    formContainer.classList.remove('element-down');
+    formContainer.classList.add('element-up');
+  }
+
+  console.log(taskCount);
+
+  // Mostrar cuantas tareas hay
+  // document.getElementById('counter').textContent = taskCount;
 }
 
 // Guardar tareas en localStorage
 function saveTasks() {
-  const tasks = Array.from(todoList.children).map((li) => ({
+  const allTasks = Array.from(todoList.children).concat(Array.from(completedList.children));
+  const tasks = allTasks.map((li) => ({
     text: li.querySelector('span').textContent,
     completed: li.querySelector('span').classList.contains('completed'),
-    // Eliminarle el "Fecha creación: " al guardar la fecha
     date: li.querySelector('.date').textContent.replace('Fecha creación: ', '')
   }));
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  handleCounter();
 }
 
 // Cargar tareas desde localStorage
@@ -174,8 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
   savedTasks.forEach((task) => {
     addTask(task.text, task.completed, task.date);
   });
-
-  document.getElementById('filter').addEventListener('change', handleFilterChange);
+  filter.addEventListener('change', handleFilterChange);
+  handleCounter();
+  formContainer.classList.remove('element-up');
 });
 
 
