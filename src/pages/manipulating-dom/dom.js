@@ -17,7 +17,7 @@ const listItems = document.querySelectorAll('ul.list > li');
 /// Modificar elementos
 title.innerText = 'Manipulando el DOM';
 // También se pueden anadir otros elementos HTML
-title.innerHTML = '<em>Manipulando el DOM 2</em>';
+title.innerHTML = '<em>Este titulo se modifico con JS</em>';
 // Modificar atributos
 image.setAttribute('src', '/vite.svg');
 // Annadir clases

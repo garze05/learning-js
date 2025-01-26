@@ -11,12 +11,14 @@
 #todoList, #completedList {
   /* background-color: #fff; */
   /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
-  /* max-height: 300px; */
+  max-height: 300px;
+  list-style-type: none;
   overflow-y: auto;
   text-align: left;
   padding: 1rem;
   padding-left: 2rem;
   border-radius: 8px;
+  margin: 0;
 }
 
 #filterContainer{
@@ -114,6 +116,8 @@ span{
   display: flex;
   justify-content: left;
 }
+
+
 
 input[type="checkbox"]{
   margin: 0 auto;

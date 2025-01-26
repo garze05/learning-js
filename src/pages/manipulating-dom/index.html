@@ -53,43 +53,55 @@
     <header id="header" class="component-placeholder"></header>
     <main style="view-transition-name: manindom;">
       <div class="container">
-        <h1 id="title">Manipulacion DOM</h1>
-        <!-- <button>Mostrar DOM Original</button> -->
-        <div class="main-div">
-          Imagen de ejemplo: <br>
-          <img src="/javascript.svg" alt="Imagen Original" />
-        </div>
-        <div class="old-div">
-          Este es un div que se va a eliminar
-        </div>
+        <details>
+          <summary>Ver código original</summary>
+          <div class="original">
+            <iframe 
+              src="dom-original.html" 
+              width="100%" 
+              height="400px"
+              style="border: 2px solid var(--hover-color);">
+            </iframe>
+          </div>
+        </details>
+        <hr>
+        <div class="manipulated">
+          <h3 id="title">Manipulacion DOM</h3>
+          <div class="main-div">
+            Imagen de ejemplo: <br>
+            <img src="/javascript.svg" alt="Imagen Original" />
+          </div>
+          <div class="old-div">
+            Este es un div que se va a eliminar
+          </div>
 
-        <input type="text" id="filterInput" placeholder="Filtrar items" />
+          <input type="text" id="filterInput" placeholder="Filtrar items" />
 
-        <ul class="list">
-          <li>JavaScript</li>
-          <li>Python</li>
-          <li>Ruby</li>
-          <li>Java</li>
-          <li>PHP</li>
-        </ul>
-        
-        <button id="btn">Presiona aquí</button>
+          <ul class="list">
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>Ruby</li>
+            <li>Java</li>
+            <li>PHP</li>
+          </ul>
+          
+          <button id="btn">Presiona aquí</button>
 
-        <!--Formulario-->
-        <!--No estamos usando form porque eso reiniciaria la pagina-->
-        <div>
-          <input type="text" id="itemInput" placeholder="Añade un item a la lista"/>
-          <button id="addButton">Añadir</button>
-          <ul id="dynamicList"></ul>
+          <div>
+            <input type="text" id="itemInput" placeholder="Añade un item a la lista"/>
+            <button id="addButton">Añadir</button>
+            <ul id="dynamicList"></ul>
+          </div>
+          <div class="containerElements">
+            <h2>Arrastra y suelta</h2>
+            <div class="draggable" draggable="true" id="item1">Arrástrame 1</div>
+            <div class="draggable" draggable="true" id="item2">Arrástrame 2</div>
+            <div class="draggable" draggable="true" id="item3">Arrástrame 3</div>
+          </div>
+          <div id="dropzone">Zona para soltar</div>
         </div>
-        <div class="containerElements">
-          <h2>Arrastra y suelta</h2>
-          <div class="draggable" draggable="true" id="item1">Arrástrame 1</div>
-          <div class="draggable" draggable="true" id="item2">Arrástrame 2</div>
-          <div class="draggable" draggable="true" id="item3">Arrástrame 3</div>
-        </div>
-        <div id="dropzone">Zona para soltar</div>
       </div>
+      
     </main>
     <footer id="footer" class="component-placeholder"></footer>
   </div>

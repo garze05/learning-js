@@ -44,7 +44,7 @@ function addTask(text, completed = false, date = null) {
   const li = document.createElement('li');
 
   // Hace que todo el <li> sea arrastrable
-  li.setAttribute('draggable', 'true');
+  // li.setAttribute('draggable', 'true');
 
   const format = new Intl.DateTimeFormat('es-ES', {
     dateStyle: 'short',
@@ -188,44 +188,48 @@ function handleCounter() {
 
   taskCount = todoListCount + completedListCount;
 
-  // Queremos mostrar el mensaje de "Agrega tu primera tarea" si no hay tareas para indicar al usuario que puede agregar tareas
-  // Queremos que apenas haya una tarea se oculte el mensaje, y que el formulario se vaya arriba con una animacion
-  // Hasta que no termine la animacion no se oculte el mensaje
   if (taskCount === 0) {
-    showElement(addFirstTaskContainer);
-    addFirstTaskContainer.classList.remove('fade-out');
-    addFirstTaskContainer.classList.add('fade-in');
-
-    hideElement(todoListContainer);
-    hideElement(completedListContainer);
-    hideElement(filterContainer);
-    
-    formContainer.classList.remove('element-up');
-    formContainer.classList.add('element-down');
-
+    handleDownAnimations();
   } else {
-    addFirstTaskContainer.classList.remove('fade-in');
-    hideElement(addFirstTaskContainer);
-
-    showElement(todoListContainer);
-    showElement(filterContainer);
-    showElement(completedListContainer);
-    todoListContainer.classList.remove('fade-out');
-    todoListContainer.classList.add('fade-in');
-    filterContainer.classList.remove('fade-out');
-    filterContainer.classList.add('fade-in');
-    completedListContainer.classList.remove('fade-out');
-    completedListContainer.classList.add('fade-in');
-
-
-    formContainer.classList.remove('element-down');
-    formContainer.classList.add('element-up');
+    handleUpAnimations();
   }
 
   console.log(taskCount);
 
   // Mostrar cuantas tareas hay
-  // document.getElementById('counter').textContent = taskCount;
+  document.getElementById('todoCounter').textContent = todoListCount;
+  document.getElementById('completedCounter').textContent = completedListCount;
+}
+
+function handleDownAnimations() {
+  showElement(addFirstTaskContainer);
+  addFirstTaskContainer.classList.remove('fade-out');
+  addFirstTaskContainer.classList.add('fade-in');
+
+  hideElement(todoListContainer);
+  hideElement(completedListContainer);
+  hideElement(filterContainer);
+
+  formContainer.classList.remove('element-up');
+  formContainer.classList.add('element-down');
+}
+
+function handleUpAnimations() {
+  addFirstTaskContainer.classList.remove('fade-in');
+  hideElement(addFirstTaskContainer);
+
+  showElement(todoListContainer);
+  showElement(filterContainer);
+  showElement(completedListContainer);
+  todoListContainer.classList.remove('fade-out');
+  todoListContainer.classList.add('fade-in');
+  filterContainer.classList.remove('fade-out');
+  filterContainer.classList.add('fade-in');
+  completedListContainer.classList.remove('fade-out');
+  completedListContainer.classList.add('fade-in');
+
+  formContainer.classList.remove('element-down');
+  formContainer.classList.add('element-up');
 }
 
 // Guardar tareas en localStorage
@@ -248,7 +252,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   filter.addEventListener('change', handleFilterChange);
   handleCounter();
-  formContainer.classList.remove('element-up');
+  if (savedTasks.length > 0) {
+    handleUpAnimations();
+  } else {
+    formContainer.classList.remove('element-up');
+  }
 });
 
 

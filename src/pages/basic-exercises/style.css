@@ -17,10 +17,23 @@
 }
 
 #galleryContainer{
+  margin: 1rem auto;
+  background-color: #fff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--dark-color);
+  max-width: 300px;
 }
 
-#galleryContainer img {
-  width: 400px;
+#caption {
+  margin: 10px 0;
+}
+
+section p {
+  margin: 0;
+  padding: 0;
 }

@@ -87,15 +87,17 @@
           <input type="number" id="numberOfImgs" placeholder="2" name="numberOfImgs"/>
           <button id="btnGenerate">Generar galería</button>
           <div id="loadingSpinner" style="display: none;">Cargando imágenes...</div>
-
           <div id="galleryContainer" style="display: none;">
             
           </div>
-
-          <p id="caption" style="display:none">Imagen 0 de 0</p><br>
+          <div id="imgInfoContainer" style="display: none;">
+            <p id="imgAutor"></p>
+            <a id="imgUrl" href="#"><p id="imgUrlInfo"></p></a>
+          </div>
           <button id="btnPrev" style="display: none;">&lt;</button>
           <button id="btnCambiarNImgs" style="display: none;">Cambiar</button>
           <button id="btnNext" style="display: none;">&gt;</button>
+          <p id="caption" style="display:none">Imagen 0 de 0</p>
         </section>
 
       </div>

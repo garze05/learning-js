@@ -148,6 +148,12 @@ const btnGenerate = document.getElementById('btnGenerate');
 const nextBtn = document.getElementById('btnNext');
 const prevBtn = document.getElementById('btnPrev');
 const caption = document.getElementById('caption');
+const imgInfoContainer = document.getElementById('imgInfoContainer');
+const imgAutor = document.getElementById('imgAutor');
+const imgUrl = document.getElementById('imgUrl');
+const imgUrlInfo = document.getElementById('imgUrlInfo');
+
+const imgMetadata = [];
 const btnCambiarNImgs = document.getElementById('btnCambiarNImgs');
 const galleryContainer = document.getElementById('galleryContainer');
 let imgs;
@@ -174,7 +180,8 @@ btnGenerate.addEventListener('click', () => {
 
   // Mostrar galeria
   showElement(galleryContainer);
-  showElement(caption)
+  showElement(caption);
+  showElement(imgInfoContainer);
   showElement(nextBtn);
   showElement(prevBtn);
   showElement(btnCambiarNImgs);
@@ -183,6 +190,7 @@ btnGenerate.addEventListener('click', () => {
 btnCambiarNImgs.addEventListener('click', () => {
   hideElement(galleryContainer);
   hideElement(caption);
+  hideElement(imgInfoContainer);
   hideElement(nextBtn);
   hideElement(prevBtn);
   hideElement(btnCambiarNImgs);
@@ -207,6 +215,10 @@ async function generateImgs() {
   const loadingSpinner = document.getElementById('loadingSpinner');
   loadingSpinner.style.display = 'block'; // Mostrar el spinner
 
+  // Limpiar la galería
+  // Esto es importante para evitar duplicados porque las imágenes se generan de forma asíncrona'
+  galleryContainer.innerHTML = '';
+
   try {
     const response = await fetch(`https://picsum.photos/v2/list?limit=${imgNumber}`);
     if (!response.ok) {
@@ -214,7 +226,6 @@ async function generateImgs() {
     }
     const data = await response.json();
     const uniqueUrls = new Set();
-    const imgMetadata = [];
 
     data.forEach((imgData, i) => {
       if (!uniqueUrls.has(imgData.download_url)) {
@@ -233,6 +244,7 @@ async function generateImgs() {
     imgs = galleryContainer.getElementsByTagName('img');
     updateImage();
     updateCaption();
+    updateImgInfo();
     console.log(imgMetadata); // Mostrar metadata en la consola
   }
   catch (error) {
@@ -241,6 +253,15 @@ async function generateImgs() {
   } finally {
     loadingSpinner.style.display = 'none'; // Ocultar el spinner
   }
+}
+
+function updateImgInfo() {
+  // Tengo un array de objetos con la metadata de las imágenes
+  // Quiero mostrar la metadata de la imagen actual
+  const currentImgData = imgMetadata[currentImg];
+  imgAutor.innerText = `Autor: ${currentImgData.author}`;
+  imgUrlInfo.innerText = `URL: ${currentImgData.url}`;
+  imgUrl.href = currentImgData.url;
 }
 
 function updateCaption() {
@@ -259,6 +280,7 @@ nextBtn.addEventListener('click', () => {
     currentImg++;
     updateImage();
     updateCaption();
+    updateImgInfo();
   }
 });
 
@@ -267,6 +289,7 @@ prevBtn.addEventListener('click', () => {
     currentImg--;
     updateImage();
     updateCaption();
+    updateImgInfo();
   }
 });
 

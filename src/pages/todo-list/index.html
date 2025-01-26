@@ -75,15 +75,17 @@
               <option value="uncompleted">Pendientes</option>
             </select>
           </div>
-          <!-- <span id="todoCounter">Por completar: 0</span>
-          <span id="completedCounter">Completadas: 0</span> -->
 
         <div id="todoListContainer">
-          <h2 class="left">Tareas pendientes</h2>
+          <div style="display: flex; align-items: center; flex-flow: row nowrap; gap: 10px;">
+            <h2 class="left">Tareas pendientes:</h2><span id="todoCounter" style="font-weight: 700;">0</span>
+          </div>
           <ul id="todoList"></ul>
         </div>
         <div id="completedListContainer">
-          <h2 class="left">Tareas completadas</h2>
+          <div style="display: flex; align-items: center; flex-flow: row nowrap; gap: 10px;">
+            <h2 class="left">Tareas completadas:</h2><span id="completedCounter" style="font-weight: 700;">0</span>
+          </div>
           <ul id="completedList"></ul>
         </div>
       </div>
