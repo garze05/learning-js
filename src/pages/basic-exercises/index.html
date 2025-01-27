@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>learning-js</title>
+
+  <!-- Precargar recursos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Estilos criticos -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+
+    .component-placeholder {
+      min-height: 60px;
+      background: #333;
+      opacity: 0.6;
+    }
+
+    .invisible-until-loaded {
+      opacity: 0;
+    }
+
+    .content-loaded {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    main {
+      padding: 20px;
+    }
+  </style>
+
+  <!-- Fuentes y estilos externos -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Scripts base -->
+  <!-- PAGE_STYLES -->
+  <script type="module" crossorigin src="/learning-js/assets/basic-_pxacrC2.js"></script>
+  <link rel="modulepreload" crossorigin href="/learning-js/assets/app-DCD30RqJ.js">
+  <link rel="modulepreload" crossorigin href="/learning-js/assets/utils-C1_2UEWA.js">
+  <link rel="stylesheet" crossorigin href="/learning-js/assets/app-B6ZmKDSN.css">
+  <link rel="stylesheet" crossorigin href="/learning-js/assets/basic-DPwXeldT.css">
+</head>
+<body class="invisible-until-loaded">
+  <div class="page">
+    <header id="header" class="component-placeholder"></header>
+    <main class="center" style="view-transition-name: basicexercises;">
+      <div class="container">
+        <h1>Ejercicios básicos JS</h1>
+
+        <section>
+          <h2>1. Contador +/-</h2>
+          <h2 id="contador">0</h2>
+          <button id="btnDecrement">-</button>
+          <button id="btnReset">Reiniciar</button>
+          <button id="btnIncrement">+</button>
+        </section>
+
+        <section>
+          <h2>2. Cambiar color de div</h2>
+          <div id="colorDivContainer" class="fixed-container">
+            <p>#coloractual</p>
+            <div id="colorDiv" class="no-select"></div>
+            <button id="btnChange">Cambio de color: Automático</button>
+          </div>
+        </section>
+
+        <section>
+          <h2>3. Lista dinámica</h2>
+          <div class="fixed-container">
+            <input type="text" id="itemInput" placeholder="Añade un item a la lista"/>
+            <button id="addButton">Añadir</button>
+            <ul id="dynamicList"></ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>4. Galeria de imagenes dinámica</h2>
+          <label for="numberOfImgs">Cuantas imágenes desea ver:</label><br>
+          <input type="number" id="numberOfImgs" placeholder="2" name="numberOfImgs"/>
+          <button id="btnGenerate">Generar galería</button>
+          <div id="loadingSpinner" style="display: none;">Cargando imágenes...</div>
+          <div id="galleryContainer" style="display: none;">
+            
+          </div>
+          <div id="imgInfoContainer" style="display: none;">
+            <p id="imgAutor"></p>
+            <a id="imgUrl" href="#"><p id="imgUrlInfo"></p></a>
+          </div>
+          <button id="btnPrev" style="display: none;">&lt;</button>
+          <button id="btnCambiarNImgs" style="display: none;">Cambiar</button>
+          <button id="btnNext" style="display: none;">&gt;</button>
+          <p id="caption" style="display:none">Imagen 0 de 0</p>
+        </section>
+
+      </div>
+    </main>
+    <footer id="footer" class="component-placeholder"></footer>
+  </div>
+  <!-- PAGE_SCRIPTS -->
+</body>
+</html>

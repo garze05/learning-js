@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>learning-js</title>
+
+  <!-- Precargar recursos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Estilos criticos -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+
+    .component-placeholder {
+      min-height: 60px;
+      background: #333;
+      opacity: 0.6;
+    }
+
+    .invisible-until-loaded {
+      opacity: 0;
+    }
+
+    .content-loaded {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    main {
+      padding: 20px;
+    }
+  </style>
+
+  <!-- Fuentes y estilos externos -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Scripts base -->
+  <!-- PAGE_STYLES -->
+  <script type="module" crossorigin src="/learning-js/assets/todolist-Bg8GG2n2.js"></script>
+  <link rel="modulepreload" crossorigin href="/learning-js/assets/app-DCD30RqJ.js">
+  <link rel="modulepreload" crossorigin href="/learning-js/assets/utils-C1_2UEWA.js">
+  <link rel="stylesheet" crossorigin href="/learning-js/assets/app-B6ZmKDSN.css">
+  <link rel="stylesheet" crossorigin href="/learning-js/assets/todolist-CCG6J7MM.css">
+</head>
+<body class="invisible-until-loaded">
+  <div class="page">
+    <header id="header" class="component-placeholder"></header>
+    <main class="center" style="view-transition-name: todolist;">
+      <div class="container">
+        <div id="formContainer">
+          <form id="todoForm">
+            <input type="text" id="todoInput" placeholder="Nueva tarea..." required/>
+            <button type="submit">Agregar</button>
+          </form>
+          <div id="addFirstTaskContainer">
+            <p class="subheader">Comienza Agregando Una Tarea</p>
+            <img height="64" src="/learning-js/uparrow.svg"/> <!--Flecha hacia arriba-->
+          </div>
+          <div id="error-message" style="color: red; display: none;">Por favor, ingrese una tarea válida.</div>
+          </form>
+            <!-- <button id="clearAll">Borrar todas las tareas</button>
+            <button id="toggleAll">Marcar todas como completadas</button> -->
+        </div>
+          <div id="filterContainer">
+            <label for="filter">Filtros</label>
+            <select id="filter">
+              <option value="all">Todos</option>
+              <option value="completed">Completados</option>
+              <option value="uncompleted">Pendientes</option>
+            </select>
+          </div>
+
+        <div id="todoListContainer">
+          <div style="display: flex; align-items: center; flex-flow: row nowrap; gap: 10px;">
+            <h2 class="left">Tareas pendientes:</h2><span id="todoCounter" style="font-weight: 700;">0</span>
+          </div>
+          <ul id="todoList"></ul>
+        </div>
+        <div id="completedListContainer">
+          <div style="display: flex; align-items: center; flex-flow: row nowrap; gap: 10px;">
+            <h2 class="left">Tareas completadas:</h2><span id="completedCounter" style="font-weight: 700;">0</span>
+          </div>
+          <ul id="completedList"></ul>
+        </div>
+      </div>
+    </main>
+    <footer id="footer" class="component-placeholder"></footer>
+  </div>
+</body>
+</html>
