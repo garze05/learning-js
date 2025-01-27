@@ -1,8 +1,10 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite';
 
+const basePath = process.env.GITHUB_REPO || '/'
+
 export default defineConfig({
-  base: '/',
+  base: basePath,
   build: {
     rollupOptions: {
       input: {

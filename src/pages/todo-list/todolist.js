@@ -128,8 +128,8 @@ function deleteTask(task) {
 function editTask(task) {
   const btnEdit = task.querySelector('.btnEdit');
   btnEdit.style.backgroundImage = btnEdit.style.backgroundImage.includes('save.svg') 
-    ? 'url("/public/edit.svg")' 
-    : 'url("/public/save.svg")';
+    ? 'url("/edit.svg")' 
+    : 'url("/save.svg")';
   const span = task.querySelector('span');
   const currentText = span.textContent;
   span.innerHTML = `
@@ -145,7 +145,7 @@ function editTask(task) {
     } else {
       span.textContent = input.value;
       saveTasks();
-      btnEdit.style.backgroundImage = 'url("/public/edit.svg")';
+      btnEdit.style.backgroundImage = 'url("/edit.svg")';
     }
   });
 

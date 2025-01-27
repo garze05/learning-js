@@ -133,18 +133,18 @@ input[type="checkbox"]:hover{
 }
 
 .btnDelete {
-  background: url('/public/trash.svg') no-repeat center center;
+  background: url('/trash.svg') no-repeat center center;
   color: #ff0000;
 }
 
 .btnEdit {
   color: var(--hover-color);
-  background: url('/public/edit.svg') no-repeat center center;
+  background: url('/edit.svg') no-repeat center center;
 
 }
 
 .btnChangeDateTime {
-  background: url('/public/time.svg') no-repeat center center;
+  background: url('/time.svg') no-repeat center center;
 }
 
 .date {
