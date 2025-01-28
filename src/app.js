@@ -11,6 +11,69 @@ import { loadComponent } from "./utils/components.js";
 //   head.appendChild(link);
 // }
 
+export const basePath = import.meta.env.BASE_URL;
+console.log("basePath:",basePath);
+updatePaths();
+
+function updatePaths() {
+  // Define paths to skip
+  const skipPaths = [
+    'https://fonts.googleapis.com',
+    'https://fonts.gstatic.com',
+    'http://',
+    'https://',
+    '//',
+    '/learning-js/',
+  ];
+
+  // Helper function to check if path should be updated
+  const shouldUpdatePath = (path) => {
+    if (!path) return false;
+    return path.startsWith('/') && !skipPaths.some(skip => path.includes(skip));
+  };
+
+  // Images - only local images
+  document.querySelectorAll('img[src^="/"]').forEach(img => {
+    const originalSrc = img.getAttribute('src');
+    if (shouldUpdatePath(originalSrc)) {
+      img.setAttribute('src', originalSrc.replace(/^\//, basePath));
+    }
+  });
+
+  // Stylesheets - only local styles
+  document.querySelectorAll('link[rel="stylesheet"][href^="/"]').forEach(link => {
+    const originalHref = link.getAttribute('href');
+    if (shouldUpdatePath(originalHref)) {
+      link.setAttribute('href', originalHref.replace(/^\//, basePath));
+    }
+  });
+
+  // Links and iframes - only local paths
+  document.querySelectorAll('a[href^="/"], iframe[src^="/"]').forEach(element => {
+    const isLink = element.tagName.toLowerCase() === 'a';
+    const attr = isLink ? 'href' : 'src';
+    const originalValue = element.getAttribute(attr);
+    
+    if (shouldUpdatePath(originalValue)) {
+      element.setAttribute(attr, originalValue.replace(/^\//, basePath));
+    }
+  });
+
+  // Module Scripts - only local scripts
+  document.querySelectorAll('script[type="module"][src^="/"]').forEach(script => {
+    const originalSrc = script.getAttribute('src');
+    if (shouldUpdatePath(originalSrc)) {
+      script.setAttribute('src', originalSrc.replace(/^\//, basePath));
+    }
+  });
+}
+
+// Test cases to add:
+// const testPath = '/src/pages/';
+// console.log('basePath:', basePath);
+// console.log('Original:', testPath);
+// console.log('Modified:', testPath.replace(/^\/(?!\/)/, '/learning-js/'));
+
 // Contenedor que deberian de tener todos los main
 export const container = document.querySelector('div .container');
 
@@ -44,13 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Solo incluir en Promise.all las operaciones de carga realmente asíncronas
   Promise.all([
     document.fonts.ready,
-    loadComponent('header', '/header.html'),
-    loadComponent('footer', '/footer.html')
+    loadComponent('header', `${basePath}header.html`),
+    loadComponent('footer', `${basePath}footer.html`),
   ])
   .then(() => {
+    updatePaths(),
     // Primero las operaciones que afectan al contenido/estructura
     updateCurrentNavPage();
-    addFavicon('/javascript.svg');  // Esto puede ir después ya que no es crítico para el layout
+    addFavicon(`${basePath}javascript.svg`);  // Esto puede ir después ya que no es crítico para el layout
 
     // Luego, en el siguiente frame, las operaciones visuales
     requestAnimationFrame(() => {

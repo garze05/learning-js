@@ -1,10 +1,8 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite';
 
-const basePath = process.env.GITHUB_REPO || '/'
-
 export default defineConfig({
-  base: basePath,
+  base: process.env.NODE_ENV === 'production' ? '/learning-js/' : '/',
   build: {
     rollupOptions: {
       input: {

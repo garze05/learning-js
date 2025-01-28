@@ -1,5 +1,4 @@
-import { container } from "../../app";
-
+import { container, basePath } from "../../app";
 /// Redirect to HTML
 //setTimeout (function () { window. location. href = "basics.html"; }, 10);
 
@@ -19,7 +18,7 @@ title.innerText = 'Manipulando el DOM';
 // También se pueden anadir otros elementos HTML
 title.innerHTML = '<em>Este titulo se modifico con JS</em>';
 // Modificar atributos
-image.setAttribute('src', '/vite.svg');
+image.setAttribute('src', `${basePath}vite.svg`);
 // Annadir clases
 image.classList.add('img-fluid');
 // Remover clase
@@ -100,7 +99,6 @@ filterInput.addEventListener('keyup', function() {
 const draggables = document.querySelectorAll('.draggable');
 const dropzone = document.getElementById('dropzone');
 const draggablesContainer = document.querySelector('.containerElements');
-let draggableParent;
 
 let draggedElement = null;
 

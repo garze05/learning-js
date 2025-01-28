@@ -1,5 +1,6 @@
 {
   "name": "learning-js",
+  "homepage": "https://garze05.github.io/learning-js/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,8 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "build:deploy": "cross-env GITHUB_REPO=/learning-js/ vite build",
-    "predeploy": "npm run build:deploy",
+    "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {

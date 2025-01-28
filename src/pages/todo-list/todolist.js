@@ -4,6 +4,7 @@
 - poder arrastrar y reordenar las tareas
 */
 import { isVoid, showElement, hideElement } from "../../utils/utils";
+import { basePath } from "../../app.js";
 
 // Upper form
 const formContainer = document.querySelector('#formContainer');
@@ -128,8 +129,8 @@ function deleteTask(task) {
 function editTask(task) {
   const btnEdit = task.querySelector('.btnEdit');
   btnEdit.style.backgroundImage = btnEdit.style.backgroundImage.includes('save.svg') 
-    ? 'url("/edit.svg")' 
-    : 'url("/save.svg")';
+    ? `url(${basePath}edit.svg)`
+    : `url(${basePath}save.svg")`;
   const span = task.querySelector('span');
   const currentText = span.textContent;
   span.innerHTML = `
@@ -145,7 +146,7 @@ function editTask(task) {
     } else {
       span.textContent = input.value;
       saveTasks();
-      btnEdit.style.backgroundImage = 'url("/edit.svg")';
+      btnEdit.style.backgroundImage = `url(${basePath}edit.svg)`;
     }
   });
 
