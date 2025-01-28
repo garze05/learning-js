@@ -2,23 +2,11 @@
   margin-bottom: 1.2rem;
 }
 
+/* Mensaje CTA para agregar primer tarea */
 #addFirstTaskContainer {
   display: flex;
   justify-content: center;
   flex-flow: row nowrap;
-}
-
-#todoList, #completedList {
-  /* background-color: #fff; */
-  /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
-  max-height: 300px;
-  list-style-type: none;
-  overflow-y: auto;
-  text-align: left;
-  padding: 1rem;
-  padding-left: 2rem;
-  border-radius: 8px;
-  margin: 0;
 }
 
 #filterContainer{
@@ -35,6 +23,21 @@
   font-size: 1.2rem;
 }
 
+/* Contenedores para las tareas */
+#todoList, #completedList {
+  /* background-color: #fff; */
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+  max-height: 300px;
+  list-style-type: none;
+  overflow-y: auto;
+  text-align: left;
+  padding: 1rem;
+  padding-left: 2rem;
+  border-radius: 8px;
+  margin: 0;
+}
+
+/* Cards de cada tarea en si */
 #todoList li, #completedList li {
   display: grid;
   grid-template-columns: .2fr 1fr .2fr .2fr;
@@ -42,11 +45,19 @@
   padding: 0.5rem;
   margin: 0.5rem 0;
   border-radius: 8px;
+  border: 2px solid var(--dark-color);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   background-color: #fff;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
+/* Al remover tarea */
+#todoList li.removing, #completedList li.removing {
+  transform: translateX(-100%);
+  animation: fadeOut .5s forwards ease;
+}
+
+/* Mover tareas CSS */
 /* #todoList li, #completedList li {
   cursor: grab;
   cursor: -webkit-grab;
@@ -58,11 +69,6 @@
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
 } */
-
-#todoList li.removing, #completedList li.removing {
-  transform: translateX(-100%);
-  animation: fadeOut .5s forwards ease;
-}
 
 #upperControls {
   display: flex;
@@ -116,8 +122,6 @@ span{
   display: flex;
   justify-content: left;
 }
-
-
 
 input[type="checkbox"]{
   margin: 0 auto;

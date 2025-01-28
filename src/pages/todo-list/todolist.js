@@ -128,9 +128,14 @@ function deleteTask(task) {
 
 function editTask(task) {
   const btnEdit = task.querySelector('.btnEdit');
-  btnEdit.style.backgroundImage = btnEdit.style.backgroundImage.includes('save.svg') 
-    ? `url(${basePath}edit.svg)`
-    : `url(${basePath}save.svg")`;
+
+  // Cambiar icono del boton
+  if (btnEdit.style.backgroundImage === `url("${basePath}save.svg")`) {
+    btnEdit.style.backgroundImage = `url("${basePath}edit.svg")`;
+  } else {
+    btnEdit.style.backgroundImage = `url("${basePath}save.svg")`;
+  }
+  
   const span = task.querySelector('span');
   const currentText = span.textContent;
   span.innerHTML = `
