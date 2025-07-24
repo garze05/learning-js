@@ -5,8 +5,8 @@
 /* @import url("src/utils/ghost.css");  */
 
 :root {
-  --primary-color: #F7DF1E;
-  --hover-color: #F2BF00;
+  --primary-color: #f7df1e;
+  --hover-color: #f2bf00;
   --dark-color: #333;
   --text-light: wheat;
   --darkbg-text: #fff;
@@ -22,10 +22,11 @@ html {
   overflow-y: scroll; /* Only html scrolls */
   overflow-x: hidden;
   margin: 0;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -71,7 +72,7 @@ body {
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 2rem;
   color: var(--dark-color);
 }
@@ -86,7 +87,7 @@ button {
   border: 2px solid var(--dark-color);
   border-radius: 4px;
   font-size: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
@@ -103,8 +104,7 @@ a {
   text-decoration: none;
   display: inline-block;
   position: relative;
-  transition:
-    color var(--transition-default),
+  transition: color var(--transition-default),
     transform var(--transition-default);
 }
 
@@ -119,19 +119,44 @@ input {
   font-size: 1rem;
   border: 2px solid var(--dark-color);
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-input:focus{ 
+input:focus {
   outline: 4px solid var(--primary-color);
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-spacing: 0;
+}
+
+table {
+  background-color: #feffd7;
+}
+thead {
+  background-color: var(--primary-color);
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: justify;
 }
 
 /* Utilidades */
 .no-select {
-  -webkit-user-select: none;  /* Safari */
-  -moz-user-select: none;     /* Firefox */
-  -ms-user-select: none;      /* Internet Explorer/Edge */
-  user-select: none;          /* Estándar */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Estándar */
 }
 
 .cursor-pointer {
@@ -152,7 +177,6 @@ input:focus{
   100% {
     opacity: 1;
   }
-  
 }
 
 @keyframes fadeOut {
@@ -165,10 +189,9 @@ input:focus{
 }
 
 .fade-in {
-  animation: fadeIn .5s forwards ease-out;
+  animation: fadeIn 0.5s forwards ease-out;
 }
 
 .fade-out {
-  animation: fadeOut .5s forwards ease-out;
+  animation: fadeOut 0.5s forwards ease-out;
 }
-

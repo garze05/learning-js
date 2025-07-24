@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>learning-js</title>
+
+    <!-- Precargar recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Estilos criticos -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+      }
+
+      .component-placeholder {
+        min-height: 60px;
+        background: #333;
+        opacity: 0.6;
+      }
+
+      .invisible-until-loaded {
+        opacity: 0;
+      }
+
+      .content-loaded {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+
+      main {
+        padding: 20px;
+      }
+    </style>
+
+    <!-- Fuentes y estilos externos -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/global.css" />
+
+    <!-- PAGE_STYLES -->
+    <link rel="stylesheet" href="/src/pages/objetos-y-arrays/styles.css" />
+  </head>
+  <body class="invisible-until-loaded">
+    <div class="page">
+      <header id="header" class="component-placeholder"></header>
+      <main>
+        <div class="container">
+          <h1 class="title">Objetos y Arrays</h1>
+          <h3>
+            | Los métodos de los objetos y arrays son de lo más usado en
+            JavaScript.
+          </h3>
+          <hr />
+          <p>Teniendo este array de objetos de ejemplo:</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre del Curso</th>
+                <th>Profesor</th>
+                <th>Nota</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyCursos">
+              <!-- El <tbody> se llena con JS -->
+            </tbody>
+          </table>
+          <p>
+            Se pueden aplicar métodos como
+            <code>.forEach()</code>, <code>.find()</code>, <code>.some()</code>,
+            <code>.every()</code>, <code>.map()</code>, <code>.filter()</code>,
+            <code>.reduce()</code>, etc.
+          </p>
+          <details>
+            <summary>El código para generar la tabla de arriba:</summary>
+            <pre><code>
+              const tbodyCursos = document.getElementById("tbodyCursos");
+
+              // Declaramos array de objetos de cursos
+              const misCursos = [
+                { nombre: "Virtualización", profesor: "Carlos Vega", nota: 90 },
+                { nombre: "Redes", profesor: "Pablo Jose", nota: 85 },
+                { nombre: "Lenguaje C#", profesor: "Fernando Ramirez", nota: 95 },
+                { nombre: "Lenguaje de Consulta de Base de Datos", profesor: "Richard García", nota: 100 },
+              ];
+
+              // .forEach() ejecuta un bloque de código para cada elemento del array, sin modificar el array original
+              misCursos.forEach((curso) => {
+                const tr = document.createElement("tr"); // Creamos una fila para cada curso
+                Object.values(curso).forEach((valor) => { // Para cada valor del objeto curso actual que estamos iterando
+                  const td = document.createElement("td"); // Creamos una celda para cada valor
+                  td.textContent = valor;
+                  tr.append(td); // Añadimos la celda a la fila
+                });
+
+                tbodyCursos.append(tr); // Finalmente, añadimos la fila al cuerpo de la tabla
+              });
+            </code></pre>
+          </details>
+        </div>
+      </main>
+      <footer id="footer" class="component-placeholder"></footer>
+    </div>
+    <!-- Scripts base -->
+    <script type="module" src="/src/app.js"></script>
+    <!-- PAGE_SCRIPTS -->
+    <script type="module" src="/src/pages/objetos-y-arrays/arrays.js"></script>
+    <script type="module" src="/src/pages/objetos-y-arrays/objetos.js"></script>
+  </body>
+</html>

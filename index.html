@@ -1,96 +1,135 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>learning-js</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>learning-js</title>
 
-  <!-- Precargar recursos -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Precargar recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Estilos criticos -->
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-    }
+    <!-- Estilos criticos -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+      }
 
-    .component-placeholder {
-      min-height: 60px;
-      background: #333;
-      opacity: 0.6;
-    }
+      .component-placeholder {
+        min-height: 60px;
+        background: #333;
+        opacity: 0.6;
+      }
 
-    .invisible-until-loaded {
-      opacity: 0;
-    }
+      .invisible-until-loaded {
+        opacity: 0;
+      }
 
-    .content-loaded {
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
+      .content-loaded {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
 
-    main {
-      padding: 20px;
-    }
-  </style>
+      main {
+        padding: 20px;
+      }
+    </style>
 
-  <!-- Fuentes y estilos externos -->
-  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/global.css">
+    <!-- Fuentes y estilos externos -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/global.css" />
 
-  <!-- PAGE_STYLES -->
-   <link rel="stylesheet" href="/style.css">
-</head>
-<body class="invisible-until-loaded">
-  <div class="page">
-    <header id="header" class="component-placeholder"></header>
-    <main class="center">
-      <section>
-        <div class="hero">
-          <h2>Proyectos <img height="45" src="/javascript.svg" alt="JavaScript Logo"/> Personales para Dominar el Lenguaje</h2>
-        </div>
-      </section>
-      <section>
-        <div class="container">
-          <div class="projects">
-            <a href="/src/pages/manipulating-dom/">
-            <div class="project-card" style="view-transition-name: manindom;">
-                <h3>Manipulando el DOM</h3>
-                <p>Ejercicios prácticos sobre manipulación del DOM y eventos en JavaScript.</p>
-                <span class="tag">DOM</span>
-                <span class="tag">Events</span>
+    <!-- PAGE_STYLES -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="invisible-until-loaded">
+    <div class="page">
+      <header id="header" class="component-placeholder"></header>
+      <main class="center">
+        <section>
+          <div class="hero">
+            <h1>
+              Proyectos
+              <img height="45" src="/javascript.svg" alt="JavaScript Logo" />
+              Personales para Dominar el Lenguaje
+            </h1>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <div class="projects">
+              <a href="/src/pages/manipulating-dom/">
+                <div
+                  class="project-card"
+                  style="view-transition-name: manindom"
+                >
+                  <h3>Manipulando el DOM</h3>
+                  <p>
+                    Ejercicios prácticos sobre manipulación del DOM y eventos en
+                    JavaScript.
+                  </p>
+                  <span class="tag">DOM</span>
+                  <span class="tag">Events</span>
+                </div>
+              </a>
+              <a href="/src/pages/basic-exercises/">
+                <div
+                  class="project-card"
+                  style="view-transition-name: basicexercises"
+                >
+                  <h3>Ejercicios Básicos</h3>
+                  <p>
+                    Fundamentos de JavaScript: variables, funciones, arrays y
+                    más.
+                  </p>
+                  <span class="tag">Fundamentos</span>
+                  <span class="tag">ES6+</span>
+                </div>
+              </a>
+              <a href="/src/pages/todo-list/">
+                <div
+                  class="project-card"
+                  style="view-transition-name: todolist"
+                >
+                  <h3>To-Do List</h3>
+                  <p>
+                    Proyecto práctico implementando CRUD básico con JavaScript.
+                  </p>
+                  <span class="tag">CRUD</span>
+                  <span class="tag">LocalStorage</span>
+                </div>
+              </a>
+              <a href="/src/pages/objetos-y-arrays/">
+                <div
+                  class="project-card"
+                  style="view-transition-name: todolist"
+                >
+                  <h3>Objetos y Arrays</h3>
+                  <p>
+                    Usando diversos de los métodos que ofrece JS para manipular
+                    e interactuar con objetos y arreglos.
+                  </p>
+                  <span class="tag">Objects</span>
+                  <span class="tag">Arrays</span>
+                  <span class="tag">ES6+</span>
+                </div>
+              </a>
             </div>
-          </a>
-          <a href="/src/pages/basic-exercises/">
-            <div class="project-card" style="view-transition-name: basicexercises;">
-                <h3>Ejercicios Básicos</h3>
-                <p>Fundamentos de JavaScript: variables, funciones, arrays y más.</p>
-                <span class="tag">Fundamentos</span>
-                <span class="tag">ES6+</span>
-            </div>
-          </a>
-          <a href="/src/pages/todo-list/"> 
-            <div class="project-card" style="view-transition-name: todolist;">
-                <h3>To-Do List</h3>
-                <p>Proyecto práctico implementando CRUD básico con JavaScript.</p>
-                <span class="tag">CRUD</span>
-                <span class="tag">LocalStorage</span>
-            </div>
-          </a>
-          </div> 
-        </div>
-      </section>
-    </main>
-    <footer id="footer" class="component-placeholder"></footer>
-  </div>
-  <!-- Scripts base -->
-  <script type="module" src="/src/app.js"></script>
-  <!-- PAGE_SCRIPTS -->
-  <script type="module" src="/index.js"></script>
-</body>
+          </div>
+        </section>
+      </main>
+      <footer id="footer" class="component-placeholder"></footer>
+    </div>
+    <!-- Scripts base -->
+    <script type="module" src="/src/app.js"></script>
+    <!-- PAGE_SCRIPTS -->
+    <script type="module" src="/index.js"></script>
+  </body>
 </html>
