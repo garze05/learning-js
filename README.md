@@ -13,11 +13,12 @@ This repository contains a collection of JavaScript projects and code snippets t
 
 Here’s a list of projects included in this repository:
 
-  | Project Name        | Description                                                                 | Status         | Link            |
-  |---------------------|-----------------------------------------------------------------------------|----------------|-----------------|
-  | 🌐 Manipulating DOM | First steps into JavaScript for Web development. Basic DOM Manipulation.    | ✅ Completed   | [Manipulating DOM](https://garze05.github.io/learning-js/src/pages/manipulating-dom/)|
-  | 🧮 Basic Exercises  | Interactive +/- counter, dynamic color changer, dynamic list, and gallery.  | ✅ Completed   | [Basic Exercises](https://garze05.github.io/learning-js/src/pages/basic-exercises/)|
-  | 📝 To-Do List       | Full-featured to-do list with CRUD operations and task rearrangement.       | ✅ Completed   | [To-Do List](https://garze05.github.io/learning-js/src/pages/todo-list/)|
+  | Project Name     | Description                                                                         | Status    | Link            |
+  |------------------|-------------------------------------------------------------------------------------|-----------|-----------------|
+  | Manipulating DOM | First steps into JavaScript for Web development. Basic DOM Manipulation.            | Completed | [Manipulating DOM](https://garze05.github.io/learning-js/src/pages/manipulating-dom/)|
+  | Basic Exercises  | Interactive +/- counter, dynamic color changer, dynamic list, and gallery.          | Completed | [Basic Exercises](https://garze05.github.io/learning-js/src/pages/basic-exercises/)|
+  | To-Do List       | Full-featured to-do list with CRUD operations and task rearrangement.               | Completed | [To-Do List](https://garze05.github.io/learning-js/src/pages/todo-list/)|
+  | Objects & Arrays | Object and arrays operations examples. Iterator methods, object manipulation, etc...| In Progress | [Objects & Arrays](https://garze05.github.io/learning-js/src/pages/objetos-y-arrays/)
 
 
 ## 📁 Project Structure
